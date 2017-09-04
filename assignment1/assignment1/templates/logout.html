@@ -1,0 +1,9 @@
+{% extends 'templates/base.html' %}
+
+{% block title %}See you soon!{% endblock %}
+
+{% block content %}
+  <h2>Logged out!</h2>
+  <p>You have been successfully logged out of the website. Please login to see your visitlogs</p>
+  <p><a href="{% url 'login' %}">Log in</a> again.</p>
+{% endblock %}

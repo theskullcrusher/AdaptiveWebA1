@@ -4,6 +4,7 @@ decorator==4.0.4
 Django==1.8.4
 django-phonenumber-field==0.7.2
 enum34==1.0.4
+gunicorn==19.7.1
 idna==2.0
 ipaddress==1.0.14
 ipython==4.0.0

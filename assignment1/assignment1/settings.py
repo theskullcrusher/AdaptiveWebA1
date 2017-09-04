@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = 'profile'
 
 # Application definition
 
@@ -56,7 +57,7 @@ ROOT_URLCONF = 'assignment1.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['/home/ubuntu/AdaptiveWebA1/assignment1/assignment1/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
