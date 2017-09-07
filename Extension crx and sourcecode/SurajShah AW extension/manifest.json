@@ -1,0 +1,66 @@
+{
+  "name": "SurajShah AW Assignment1",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "This extension catches a logged in user's actions on stackoverflow's java page",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "default_locale": "en",
+  "background": {
+    "scripts": ["js/jquery/jquery.js","src/bg/background.js"],
+    "persistent": false
+  },
+  "permissions": [
+    "bookmarks",
+    "chrome://favicon/",
+    "clipboardRead",
+    "clipboardWrite",
+    "contentSettings",
+    "contextMenus",
+    "cookies",
+    "fileBrowserHandler",
+    "tts",
+    "ttsEngine",
+    "history",
+    "idle",
+    "management",
+    "notifications",
+    "tabs",
+    "geolocation",
+    "storage",
+    "http://ec2-54-215-192-184.us-west-1.compute.amazonaws.com/*",
+    "https://stackoverflow.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://ec2-54-215-192-184.us-west-1.compute.amazonaws.com/profile/"
+      ],
+      "js": [
+        "js/jquery/jquery.js",
+        "src/inject/injectCookie.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://stackoverflow.com/*"
+      ],
+      "js": [
+        "js/jquery/jquery.js",
+        "src/inject/injectEvents.js"
+      ]
+    },
+    {
+      "matches": [
+        "http://ec2-54-215-192-184.us-west-1.compute.amazonaws.com/logout/"
+      ],
+      "js": [
+        "js/jquery/jquery.js",
+        "src/inject/deleteCookie.js"
+      ]
+    }
+  ]
+}
