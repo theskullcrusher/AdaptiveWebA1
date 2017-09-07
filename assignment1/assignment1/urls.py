@@ -16,12 +16,17 @@ Including another URLconf
 
 from django.conf.urls import url
 from django.contrib import admin
-from django.contrib.auth import views
+from django.contrib.auth import views as auth_views
 from django.views.generic.base import TemplateView
+from surajsite import views
 
 urlpatterns = [
-    url(r'^login/$', views.login, {'template_name': 'templates/login.html'}, name='login'),
-    url(r'^logout/$', views.logout, {'next_page': '/login'}, name='logout'),
-    url(r'^/$', TemplateView.as_view(template_name='templates/index.html'), name='profile'),
+    url(r'^login/$', auth_views.login, {'template_name': 'templates/login.html'}, name='login'),
+    url(r'^logout/$', auth_views.logout, {'template_name': 'templates/logout.html'}, name='logout'),
+#    url(r'^profile/$', TemplateView.as_view(template_name='templates/index.html'), name='profile'),
+    url(r'^profile/$', views.profile, name='profile'),
+    url(r'^record/$', views.record, name='record'),
+    url(r'^$', views.index, name='index'),
+    url(r'^index/$', views.index, name='index'),
     url(r'^admin/', admin.site.urls),
 ]

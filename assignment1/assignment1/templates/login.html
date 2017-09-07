@@ -3,6 +3,8 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
+<p>To create a new user, click <a href="/admin">here</a> for admin login. Admin's username and password are provided in the readme file</p>
+<hr>
   <h2>Login</h2>
   <form method="post">
     {% csrf_token %}
