@@ -1,5 +1,5 @@
 # AdaptiveWebA1
-0. Assignment uses Django1.8 along with an ORM to manage the mysql database
+0. Assignment uses Django1.8 along with its ORM to manage the mysql database
 
 1. Installing requirements(Only needed if you are setting up the repository):
  Run install_packages.sh file using 
@@ -34,4 +34,7 @@
 
    -You can login using a user, perform activity by going to the stackoverflow link provided in the profile page, and come back and refresh the page to see the activity being logged in near real-time.
 
+   -Salient features include no tracking done on stackoverflow after logout from the website(cookie deleted). You will be given a prompt to login to the website by the extension if you visit stackoverflow without actually logging in. The prompt is design is such a way that you will have only 1 prompt per page which will be triggered by one of the actions that it records. 
+
+   -Different types of actions recorded include post, search, scroll up, scroll down, click question, click any link, star question, upvote, downvote, hover over tag, hover over upvote or downvote, etc.
 
