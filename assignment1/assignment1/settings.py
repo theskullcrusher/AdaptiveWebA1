@@ -92,12 +92,13 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
 )
 
-BOWER_COMPONENTS_ROOT = '/home/ubuntu/AdaptiveWebA1/assignment1/components/'
+BOWER_COMPONENTS_ROOT = '/home/ubuntu/AdaptiveWebA1/assignment1/components/assignment1/static/'
 STATIC_ROOT = '/home/ubuntu/AdaptiveWebA1/assignment1/assignment1/static/'
 
 BOWER_INSTALLED_APPS = (
     'jquery',
     'underscore',
+    'nvd3',
 )
 
 # Database
@@ -142,7 +143,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': True,
+    'disable_existing_loggers': False,
     'formatters': {
         'verbose': {
             'format': '%(asctime)s %(levelname)s [%(name)s:%(lineno)s] %(module)s %(process)d %(thread)d %(message)s'

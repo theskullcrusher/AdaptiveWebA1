@@ -107,20 +107,32 @@ def analytics(request):
 		for obj in objs:
 			xdata.append(str(obj['action']))
 			ydata.append(str(obj['total']))		
-		#logger.debug(str(xdata)+ "\n" +str(ydata))
-		extra_serie = {"tooltip": {"y_start": "", "y_end": " cal"}}
+		#print str(xdata)
+		#print str(ydata)
+		color_list = ['#5d8aa8', '#e32636', '#efdecd', '#ffbf00', '#ff033e', '#a4c639',
+                '#b2beb5', '#8db600', '#7fffd4', '#ff007f', '#ff55a3', '#5f9ea0']
+		extra_serie = {
+        	"tooltip": {"y_start": "", "y_end": " cal"},
+        	"color_list": color_list
+    		}
 		chartdata = {'x': xdata, 'y1': ydata, 'extra1': extra_serie}
 		charttype = "pieChart"
 		data = {
 			'charttype': charttype,
-			'chartdata': chartdata
-		}
-		response = render_to_response('templates/analytics.html', data, context_instance=RequestContext(request))
+			'chartdata': chartdata,
+			'chartcontainer': 'piechart_container',
+			'extra': {
+			'x_is_date': False,
+			'x_axis_format': '',
+			'tag_script_js': True,
+			'jquery_on_ready': False,
+			}}
+		response = render_to_response('templates/analytics.html', data)
 		print response
 		return response    
 	except Exception as e:
 		print e
 		logger.debug(e)
 		logging.warning(e)
-		return render_to_response('templates/analytics.html', {"charttype":"error","chartdata":str(e)}, context_instance=RequestContext(request))    
+		return render_to_response('templates/analytics.html', {"charttype":"error","chartdata":str(e)})    
 
