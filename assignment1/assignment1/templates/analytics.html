@@ -1,4 +1,7 @@
+{% load nvd3_tags %}
 <head>
+    {% include_chart_jscss %}
+    {% load_chart charttype chartdata chartcontainer extra %}
     <h1>SurajShah (1211235204) AdaptiveWeb CSE591 Assignment 1</h1>
     {% if user.is_authenticated %}
       Hi {{ user.username }}!
@@ -6,17 +9,14 @@
     {% else %}
       <a href="{% url 'login' %}">login</a>
     {% endif %}
-    {% include_chart_jscss %}
-    {% load_chart charttype chartdata chartcontainer extra %}
 </head> <hr>
 {% if user.is_authenticated %}
   <a href="{% url 'profile' %}">profile</a>
 {% else %}
   <a href="{% url 'login' %}">login</a>
 {% endif %}
-  <h2>Profile</h2>
+  <h2>Analytics</h2>
   <hr>
-{% load nvd3_tags %}
 <body>
     <h1>User Actions V/S Count</h1>
     {% include_container chartcontainer %}
