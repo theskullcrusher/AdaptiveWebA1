@@ -120,14 +120,15 @@ def analytics(request):
 		data = {
 			'charttype': charttype,
 			'chartdata': chartdata,
-			'chartcontainer': 'piechart_container',
+			'chartcontainer': "piechart_container"
+			}
+			#,
 			# 'extra': {
 			# 'x_is_date': False,
 			# 'x_axis_format': '',
 			# 'tag_script_js': True,
 			# 'jquery_on_ready': False,
 			# }
-			}
 		response = render_to_response('templates/analytics.html', data,
 							  context_instance=RequestContext(request))
 		print response
