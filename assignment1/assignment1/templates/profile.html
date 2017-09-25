@@ -7,9 +7,7 @@
    <hr>
 -->
 {% if user.is_authenticated %}
-  <a href="{% url 'analytics' %}">analytics</a>
-{% else %}
-  <a href="{% url 'login' %}">login</a>
+ <h2><a href="{% url 'analytics' %}">Analytics</a></h2>
 {% endif %}
   <h2>Profile</h2>
   <hr>
