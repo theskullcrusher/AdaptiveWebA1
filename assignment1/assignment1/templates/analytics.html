@@ -16,6 +16,25 @@
   html {
     padding: 50px 30px 50px 80px;
   }
+  ul {
+    text-align: justify;
+  }
+  ul:after {
+      content: '';
+      display: inline-block;
+      width: 100%;
+  }
+  ul:before {
+      content: '';
+      display: block;
+      margin-top: -1.25em;
+  }
+  li {
+      display: inline-block;
+      margin-right: -.25em;
+      position: relative;
+      top: 1.25em;
+  }
   </style>
   <title>{% block title %}SurajShah (1211235204) AdaptiveWeb CSE591 Assignment 1{% endblock %}</title>
     {% include_chart_jscss %}
@@ -35,9 +54,12 @@
   <h2>Analytics</h2>
   <hr>
 <body>
-    <h1>User Actions V/S Count</h1>
-    {% include_container chartcontainer 400 500 %}
-        <h1>AllUsers Actions V/S Count</h1>
-    {% include_container chartcontainer1 400 500 %}
+
+  <ul>
+    <li><h1>User Actions V/S Count</h1>
+    {% include_container chartcontainer 400 500 %}</li>
+    <li><h1>AllUsers Actions V/S Count</h1>
+    {% include_container chartcontainer1 400 500 %}</li>
+  </ul>
 </body>
 </html>
