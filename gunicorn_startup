@@ -8,6 +8,7 @@ GROUP=ubuntu                                     # the group to run as
 NUM_WORKERS=3                                     # how many worker processes should Gunicorn spawn
 DJANGO_SETTINGS_MODULE=assignment1.settings             # which settings file should Django use
 DJANGO_WSGI_MODULE=assignment1.wsgi                     # WSGI module name
+LOGS_FILE=/home/ubuntu/logs/django_logs
 
 echo "Starting $NAME as `whoami`"
 
@@ -29,4 +30,4 @@ exec gunicorn ${DJANGO_WSGI_MODULE}:application \
   --user=$USER --group=$GROUP \
   --bind=localhost:8000 \
   --log-level=debug \
-  --log-file=-
+  --log-file=$LOGS_FILE
