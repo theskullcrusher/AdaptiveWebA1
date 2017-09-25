@@ -114,7 +114,9 @@ def analytics(request):
 			'charttype': charttype,
 			'chartdata': chartdata
 		}
-		return render_to_response('templates/analytics.html', data, context_instance=RequestContext(request))    
+		response = render_to_response('templates/analytics.html', data, context_instance=RequestContext(request))
+		print response
+		return response    
 	except Exception as e:
 		print e
 		logger.debug(e)
