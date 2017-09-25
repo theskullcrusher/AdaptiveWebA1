@@ -6,6 +6,13 @@
 <!--   <h5>Session Information from request</h5><br>
    <hr>
 -->
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+  <a href="{% url 'analytics' %}">analytics</a>
+  <a href="{% url 'logout' %}">logout</a>
+{% else %}
+  <a href="{% url 'login' %}">login</a>
+{% endif %}
   <h2>Profile</h2>
   <hr>
   <h4><b>Why do you decide to log user actions?</b></h4>

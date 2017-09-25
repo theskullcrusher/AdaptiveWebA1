@@ -1,0 +1,31 @@
+
+
+
+
+{% extends 'templates/base.html' %}
+
+{% block title %}Analytics Page{% endblock %}
+
+{% block content %}
+<!--   <h5>Session Information from request</h5><br>
+   <hr>
+-->
+{% load static %}
+<link media="all" href="{% static 'nvd3/src/nv.d3.css' %}" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src='{% static 'd3/d3.min.js' %}'></script>
+<script type="text/javascript" src='{% static 'nvd3/nv.d3.min.js' %}'></script>
+
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+  <a href="{% url 'profile' %}">profile</a><pre>	</pre>
+  <a href="{% url 'logout' %}">logout</a>
+{% else %}
+  <a href="{% url 'login' %}">login</a>
+{% endif %}
+
+{% load nvd3_tags %}
+    {% load_chart charttype chartdata "piechart_container" %}
+    <h1>User V/S Activity Type</h1>
+    {% include_container "piechart_container" 400 500 %}
+    
+{% endblock %}

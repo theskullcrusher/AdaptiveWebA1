@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^logout/$', auth_views.logout, {'template_name': 'templates/logout.html'}, name='logout'),
 #    url(r'^profile/$', TemplateView.as_view(template_name='templates/index.html'), name='profile'),
     url(r'^profile/$', views.profile, name='profile'),
+    url(r'^analytics/$', views.analytics, name='analytics'),
     url(r'^record/$', views.record, name='record'),
     url(r'^$', views.index, name='index'),
     url(r'^index/$', views.index, name='index'),
