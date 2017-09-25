@@ -16,6 +16,7 @@ import random
 import datetime
 import time
 from django.db.models import Count, Sum, Max, Min
+from copy import deepcopy
 
 class LogTable(tables.Table):
 	class Meta:
@@ -128,6 +129,21 @@ def analytics(request):
 			'jquery_on_ready': False,
 			}
 			}
+
+		objs_all = UserLogs.objects.all().values('action').annotate(total=Count('action')).order_by('total')		
+		xdata1 = []
+		ydata1 = []
+		for obj in objs_all:
+			xdata1.append(str(obj['action']))
+			ydata1.append(str(obj['total']))		
+		chartdata1 = {'x': xdata1, 'y1': ydata1, 'extra1': extra_serie}
+		charttype1 = "pieChart"
+
+		data['charttype1'] = charttype1
+		data['chartdata1'] = chartdata1
+		data['chartcontainer1'] = "piechart_container1"
+		data['extra1'] = deepcopy(data['extra'])
+
 		response = render_to_response('templates/analytics.html', data,
 							  context_instance=RequestContext(request))
 		print response

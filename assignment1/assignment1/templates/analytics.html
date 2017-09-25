@@ -20,6 +20,7 @@
   <title>{% block title %}SurajShah (1211235204) AdaptiveWeb CSE591 Assignment 1{% endblock %}</title>
     {% include_chart_jscss %}
     {% load_chart charttype chartdata chartcontainer extra %}
+    {% load_chart charttype1 chartdata1 chartcontainer1 extra1 %}
     <h1>SurajShah (1211235204) AdaptiveWeb CSE591 Assignment 1</h1>
     {% if user.is_authenticated %}
       Hi {{ user.username }}!
@@ -36,5 +37,7 @@
 <body>
     <h1>User Actions V/S Count</h1>
     {% include_container chartcontainer 400 500 %}
+        <h1>AllUsers Actions V/S Count</h1>
+    {% include_container chartcontainer1 400 500 %}
 </body>
 </html>
