@@ -17,6 +17,7 @@ import datetime
 import time
 from django.db.models import Count, Sum, Max, Min
 from copy import deepcopy
+from assignment1.fusioncharts import FusionCharts
 
 class LogTable(tables.Table):
 	class Meta:
@@ -158,7 +159,7 @@ def analytics(request):
 
 @login_required(login_url='/login/')
 def demo(request):
-	column2d = FusionCharts("column2d", "ex1", "600", "400", "chart-1", "json",
+    column2d = FusionCharts("column2d", "ex1", "600", "400", "chart-1", "json",
     """{  
     "chart": {
         "caption": "Monthly Revenue for last year",
@@ -207,4 +208,4 @@ def demo(request):
     }]
 	}""")
 
-  return render(request, 'templates/demo.html', {'output': column2d.render()})
+    return render(request, 'templates/demo.html', {'output': column2d.render()})
