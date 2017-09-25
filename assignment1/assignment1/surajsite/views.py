@@ -98,14 +98,15 @@ def analytics(request):
 		Analytics for user
 	"""
 	try:
-        	user = request.user.username
-        	usr = SiteUser.objects.filter(username=user)[0]
+		user = request.user.username
+		usr = SiteUser.objects.filter(username=user)[0]
 		objs = UserLogs.objects.filter(user=usr).values('action').annotate(total=Count('action')).order_by('total')
 		xdata = []
 		ydata = []
 		for obj in objs:
 			xdata.append(obj[0])
 			ydata.append(obj[1])			
+		logger.debug(str(xdata)+ "\n" +str(ydata))
 
 		extra_serie = {"tooltip": {"y_start": "", "y_end": " cal"}}
 		chartdata = {'x': xdata, 'y1': ydata, 'extra1': extra_serie}
@@ -113,7 +114,7 @@ def analytics(request):
 
 		data = {
 			'charttype': charttype,
-			'chartdata': chartdata,
+			'chartdata': chartdata
 		}
 		return render_to_response('templates/analytics.html', data,
 							  context_instance=RequestContext(request))    
