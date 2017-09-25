@@ -4,6 +4,8 @@ decorator==4.0.4
 Django==1.8.4
 django-phonenumber-field==0.7.2
 django-tables2==1.10.0
+django-nvd3==0.9.7
+django-bower==5.2.0
 enum34==1.0.4
 gunicorn==19.7.1
 idna==2.0
