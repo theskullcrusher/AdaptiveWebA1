@@ -95,7 +95,7 @@ def record(request):
 @login_required(login_url='/login/')
 def analytics(request):
 	"""
-Analytics for user
+	Analytics for user
 	"""
 	try:
 		user = request.user.username
@@ -106,7 +106,7 @@ Analytics for user
 		for obj in objs:
 			xdata.append(str(obj['action']))
 			ydata.append(str(obj['total']))		
-		logger.debug(str(xdata)+ "\n" +str(ydata))
+		#logger.debug(str(xdata)+ "\n" +str(ydata))
 		extra_serie = {"tooltip": {"y_start": "", "y_end": " cal"}}
 		chartdata = {'x': xdata, 'y1': ydata, 'extra1': extra_serie}
 		charttype = "pieChart"
