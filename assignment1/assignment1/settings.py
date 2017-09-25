@@ -142,24 +142,27 @@ USE_TZ = True
 STATIC_URL = '/static/'
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': False,
-    'filters': {
-        'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse'
+    'disable_existing_loggers': True,
+    'formatters': {
+        'verbose': {
+            'format': '%(asctime)s %(levelname)s [%(name)s:%(lineno)s] %(module)s %(process)d %(thread)d %(message)s'
         }
     },
     'handlers': {
-        'mail_admins': {
-            'level': 'INFO',
-            'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'
+        'gunicorn': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'formatter': 'verbose',
+            'filename': '/home/ubuntu/logs/gunicorn.errors',
+            'maxBytes': 1024 * 1024 * 100,  # 100 mb
         }
     },
     'loggers': {
-        'django.request': {
-            'handlers': ['mail_admins'],
+        'gunicorn.errors': {
             'level': 'INFO',
+            'handlers': ['gunicorn'],
             'propagate': True,
         },
     }
 }
+

@@ -93,9 +93,10 @@ def record(request):
 
 
 @login_required(login_url='/login/')
+#@csrf_exempt
 def analytics(request):
 	"""
-	Analytics for user
+		Analytics for user
 	"""
 	try:
 		user = request.user.username
