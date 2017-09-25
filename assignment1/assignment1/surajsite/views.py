@@ -112,7 +112,7 @@ def analytics(request):
 		color_list = ['#5d8aa8', '#e32636', '#efdecd', '#ffbf00', '#ff033e', '#a4c639',
                 '#b2beb5', '#8db600', '#7fffd4', '#ff007f', '#ff55a3', '#5f9ea0']
 		extra_serie = {
-        	"tooltip": {"y_start": "Event ", "y_end": "times called"},
+        	"tooltip": {"y_start": " event called ", "y_end": " times"},
         	"color_list": color_list
     		}
 		chartdata = {'x': xdata, 'y1': ydata, 'extra1': extra_serie}
