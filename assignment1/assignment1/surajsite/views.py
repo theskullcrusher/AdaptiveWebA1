@@ -118,5 +118,6 @@ def analytics(request):
 	except Exception as e:
 		print e
 		logger.debug(e)
+		logging.warning(e)
 		return render_to_response('templates/analytics.html', {"charttype":"error","chartdata":str(e)}, context_instance=RequestContext(request))    
 
