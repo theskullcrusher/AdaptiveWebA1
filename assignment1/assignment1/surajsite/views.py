@@ -104,8 +104,8 @@ def analytics(request):
 		xdata = []
 		ydata = []
 		for obj in objs:
-			xdata.append(obj[0])
-			ydata.append(obj[1])			
+			xdata.append(str(obj['action']))
+			ydata.append(str(obj['total']))			
 		logger.debug(str(xdata)+ "\n" +str(ydata))
 
 		extra_serie = {"tooltip": {"y_start": "", "y_end": " cal"}}
