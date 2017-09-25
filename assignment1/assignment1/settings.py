@@ -44,7 +44,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_tables2',
-    'assignment1.surajsite'
+    'assignment1.surajsite',
+    'djangobower',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -57,6 +58,13 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
 )
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'djangobower.finders.BowerFinder',
+]
+
 
 ROOT_URLCONF = 'assignment1.urls'
 
@@ -78,6 +86,18 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'assignment1.wsgi.application'
 
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+)
+
+BOWER_COMPONENTS_ROOT = '/home/ubuntu/AdaptiveWebA1/assignment1/components/'
+STATIC_ROOT = '/home/ubuntu/AdaptiveWebA1/assignment1/assignment1/static/'
+
+BOWER_INSTALLED_APPS = (
+    'jquery',
+    'underscore',
+)
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
