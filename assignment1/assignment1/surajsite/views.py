@@ -112,7 +112,7 @@ def analytics(request):
 		color_list = ['#5d8aa8', '#e32636', '#efdecd', '#ffbf00', '#ff033e', '#a4c639',
                 '#b2beb5', '#8db600', '#7fffd4', '#ff007f', '#ff55a3', '#5f9ea0']
 		extra_serie = {
-        	"tooltip": {"y_start": "", "y_end": " cal"},
+        	"tooltip": {"y_start": "Event ", "y_end": "times called"},
         	"color_list": color_list
     		}
 		chartdata = {'x': xdata, 'y1': ydata, 'extra1': extra_serie}
@@ -121,12 +121,13 @@ def analytics(request):
 			'charttype': charttype,
 			'chartdata': chartdata,
 			'chartcontainer': 'piechart_container',
-			'extra': {
-			'x_is_date': False,
-			'x_axis_format': '',
-			'tag_script_js': True,
-			'jquery_on_ready': False,
-			}}
+			# 'extra': {
+			# 'x_is_date': False,
+			# 'x_axis_format': '',
+			# 'tag_script_js': True,
+			# 'jquery_on_ready': False,
+			# }
+			}
 		response = render_to_response('templates/analytics.html', data,
 							  context_instance=RequestContext(request))
 		print response
