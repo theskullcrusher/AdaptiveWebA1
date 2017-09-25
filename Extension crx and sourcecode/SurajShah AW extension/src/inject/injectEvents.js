@@ -1,31 +1,28 @@
-$(window).load(function(){
-	localStorage.setItem('flag','false');
-});
-$(document).on('click', 'a', function(event) {
- a_id = 'click';
+	$(document).on('click', 'a', function(event) {
+	 a_id = 'click';
 
- main_link = $(location).attr('href');
- text = $(this).html();
- link = $(this).attr('href');
- date = new Date();
- timestamp = date.getTime();
- //alert(''+text+'\n'+link + '\n'+timestamp);
+	 main_link = $(location).attr('href');
+	 text = $(this).html();
+	 link = $(this).attr('href');
+	 date = new Date();
+	 timestamp = date.getTime();
+	 //alert(''+text+'\n'+link + '\n'+timestamp);
 
- chrome.runtime.sendMessage({
-      method:'event', a_id: a_id, a_text: text, a_link: link, timestamp: timestamp, main_link: main_link 
-    },function(response) {
-    	if (response){
-		        var flag = localStorage.getItem('flag') || '';
-			    if (flag != 'true') {
-			      alert("Please login to the website first before using stackoverflow for tracking events");
-			      localStorage.setItem('flag','true');
-			    }
-		}
-    	else{
-    	console.log("Logged click event successfully");
-    	}
-  	});
-});
+	 chrome.runtime.sendMessage({
+	      method:'event', a_id: a_id, a_text: text, a_link: link, timestamp: timestamp, main_link: main_link 
+	    },function(response) {
+	    	if (response.response == 'true'){
+			        //var flag = localStorage.getItem('flag') || '';
+				    //if (flag != 'true') {
+				      alert("Please login to the website first before using stackoverflow for tracking events");
+				   //   localStorage.setItem('flag','true');
+				    //}
+			}
+	    	else{
+	    	console.log("Logged click event successfully");
+	    	}
+	  	});
+	});
 
 
 $.fn.scrollLimit = function(callback, timeout) {          
@@ -61,12 +58,12 @@ $(document).ready(function(){
 		 chrome.runtime.sendMessage({
 		      method:'event', a_id: a_id, a_text: text, a_link: link, timestamp: timestamp, main_link: main_link
 		    },function(response) {
-		    	if (response){
-			        var flag = localStorage.getItem('flag') || '';
-				    if (flag != 'true') {
+		    	if (response.response == 'true'){
+			   //     var flag = localStorage.getItem('flag') || '';
+			//	    if (flag != 'true') {
 				      alert("Please login to the website first before using stackoverflow for tracking events");
-				      localStorage.setItem('flag','true');
-				    }
+		//		      localStorage.setItem('flag','true');
+		//		    }
 			    }
 		    	else{
 		    	console.log("Logged scroll event successfully");
@@ -87,12 +84,12 @@ $(document).ready(function(){
 	 chrome.runtime.sendMessage({
 	      method:'event', a_id: a_id, a_text: text, a_link: link, timestamp: timestamp, main_link: main_link 
 	    },function(response) {
-	    	if (response){
-			        var flag = localStorage.getItem('flag') || '';
-				    if (flag != 'true') {
+	    	if (response.response == 'true'){
+			//        var flag = localStorage.getItem('flag') || '';
+		//		    if (flag != 'true') {
 				      alert("Please login to the website first before using stackoverflow for tracking events");
-				      localStorage.setItem('flag','true');
-				    }
+		//		      localStorage.setItem('flag','true');
+		//		    }
 			}
 	    	else{
 	    		console.log("Logged hover event successfully");
@@ -121,12 +118,12 @@ $(document).ready(function(){
 	 chrome.runtime.sendMessage({
 	      method:'event', a_id: a_id, a_text: text, a_link: link, timestamp: timestamp, main_link: main_link 
 	    },function(response) {
-	    	if (response){
-			        var flag = localStorage.getItem('flag') || '';
-				    if (flag != 'true') {
+	    	if (response.response == 'true'){
+		//	        var flag = localStorage.getItem('flag') || '';
+		//		    if (flag != 'true') {
 				      alert("Please login to the website first before using stackoverflow for tracking events");
-				      localStorage.setItem('flag','true');
-				    }
+		//		      localStorage.setItem('flag','true');
+		//		    }
 			}
 	    	else{
 	    		console.log("Logged post/search event successfully");

@@ -26,11 +26,11 @@ chrome.runtime.onMessage.addListener(
 	        	timestamp = request.timestamp;
                 main_link = request.main_link;
 	        	TrackUser(data.userId, a_id, a_text, a_link, main_link, timestamp);
-		       	response1 = false;
+		       	response1 = 'false';
 	        	}
 	        	else {
 	        		console.log("userId could not be retrieved");
-	        		response1 = true;
+	        		response1 = 'true';
 	        	}
 	        	
     		});
