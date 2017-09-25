@@ -98,7 +98,9 @@ def analytics(request):
 		Analytics for user
 	"""
 	try:
-		objs = UserLogs.objects.all().values('action').annotate(total=Count('action'))
+        	user = request.user.username
+        	usr = SiteUser.objects.filter(username=user)[0]
+		objs = UserLogs.objects.filter(user=usr).values('action').annotate(total=Count('action')).order_by('total')
 		xdata = []
 		ydata = []
 		for obj in objs:
@@ -113,7 +115,7 @@ def analytics(request):
 			'charttype': charttype,
 			'chartdata': chartdata,
 		}
-		return render_to_response('analytics.html', data,
+		return render_to_response('templates/analytics.html', data,
 							  context_instance=RequestContext(request))    
 	except Exception as e:
 		print e
