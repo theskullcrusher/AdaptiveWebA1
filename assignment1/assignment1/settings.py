@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'django_tables2',
     'assignment1.surajsite',
     'djangobower',
+    'django_nvd3',
 )
 
 MIDDLEWARE_CLASSES = (
