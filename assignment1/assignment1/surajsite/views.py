@@ -127,12 +127,14 @@ def analytics(request):
 			'tag_script_js': True,
 			'jquery_on_ready': False,
 			}}
-		response = render_to_response('templates/analytics.html', data)
+		response = render_to_response('templates/analytics.html', data,
+							  context_instance=RequestContext(request))
 		print response
 		return response    
 	except Exception as e:
 		print e
 		logger.debug(e)
 		logging.warning(e)
-		return render_to_response('templates/analytics.html', {"charttype":"error","chartdata":str(e)})    
+		return render_to_response('templates/analytics.html', {"charttype":"error","chartdata":str(e)},
+							  context_instance=RequestContext(request))    
 
