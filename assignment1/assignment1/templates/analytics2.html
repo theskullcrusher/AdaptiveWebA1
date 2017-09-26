@@ -3,10 +3,8 @@
   <head>
     <title>Analytics Page 2</title>
     {% load static %} 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
-<script src="http://static.fusioncharts.com/code/latest/fusioncharts.js"></script>
-<script src="http://fusioncharts.github.io/angular-fusioncharts/demos/js/angular-fusioncharts.min.js"></script>
-
+    <script type="text/javascript" src="{% static "fusioncharts/fusioncharts.js" %}"></script>
+    <script type="text/javascript" src="{% static "fusioncharts/themes/fusioncharts.theme.fint.js" %}"></script>
   </head>
   <body>
     <div id="chart-1">{{ output|safe }}</div>
