@@ -193,7 +193,7 @@ def charts(chart_type, chart_no, flag, request):
 		"subCaption": subcaption,
 		"xAxisName": "Activity Type",
 		"yAxisName": "Count",
-		"paletteColors" : "#0075c2",
+		"paletteColors" : "#0075c2, #5d8aa8, #e32636, #efdecd, #ffbf00, #ff033e, #a4c639, #b2beb5, #8db600, #7fffd4, #ff007f, #ff55a3, #5f9ea0",
 		"bgColor" : "#ffffff",
 		"borderAlpha": "20",
 		"canvasBorderAlpha": "0",
