@@ -162,6 +162,18 @@ def analytics2(request):
 		dataSource = {}
 		dataSource['chart'] = { 
 			"caption": "User Statistics",
+		    "paletteColors" : "#0075c2",
+		    "bgColor" : "#ffffff",
+		    "borderAlpha": "20",
+		    "canvasBorderAlpha": "0",
+		    "usePlotGradientColor": "0",
+		    "plotBorderAlpha": "10",
+		    "showXAxisLine": "1",
+		    "xAxisLineColor" : "#999999",
+		    "showValues" : "0",
+		    "divlineColor" : "#999999",
+		    "divLineIsDashed" : "1",
+		    "showAlternateHGridColor" : "0",
 	        "showValues": "0",
 	        "theme": "zune"
 			}
@@ -183,7 +195,7 @@ def analytics2(request):
 		#Add one with timestamp
 
 		temp = {"Action":action_c,"Object":obj_c,"Link":link_c,"ParentLink":main_link_c}		
-		for key, value in temp.iteritems():
+		for n, key, value in enumerate(temp.iteritems()):
 		  data = {}
 		  data['label'] = key
 		  data['value'] = value
@@ -191,12 +203,24 @@ def analytics2(request):
 		  dataSource['data'].append(data)
 	
 		  linkData = {}
-		  linkData['id'] = key
+		  linkData['id'] = n
 		  linkedchart = {}
 		  linkedchart['chart'] = {
 			"caption" : "Detailed " + key +" Info",
 			"showValues": "0",
-			"theme": "zune"
+			"theme": "zune",
+		    "paletteColors" : "#0075c2",
+		    "bgColor" : "#ffffff",
+		    "borderAlpha": "20",
+		    "canvasBorderAlpha": "0",
+		    "usePlotGradientColor": "0",
+		    "plotBorderAlpha": "10",
+		    "showXAxisLine": "1",
+		    "xAxisLineColor" : "#999999",
+		    "showValues": "0",
+		    "divlineColor" : "#999999",
+		    "divLineIsDashed" : "1",
+		    "showAlternateHGridColor" : "0"
 			}
 
 		  linkedchart['data'] = []
