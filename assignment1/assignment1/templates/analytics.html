@@ -49,7 +49,6 @@
     position: relative;
     top: 1.25em;
     border-right:1px solid;
-    border-left:1px solid;
   }
   /* Style the tab */
   div.tab {
@@ -113,12 +112,12 @@
 
   <div id="tab1" class="tabcontent">
     <ul>
-      <li><h1> User Actions V/S Count </h1>
+      <li style="padding:2px;"><h1>User Actions V/S Count</h1>
         {% include_container chartcontainer 380 380 %}
       </div></li>
-        <li><h1> All Users' Actions V/S Count </h1>
+        <li style="padding:2px;"><h1>All Users' Actions V/S Count</h1>
           {% include_container chartcontainer1 380 380 %}</li>
-          <li><h1> Average User's Actions V/S Count </h1>
+          <li style="padding:2px;"><h1>Average User's Actions V/S Count</h1>
           {% include_container chartcontainer2 380 380 %}</li>
         </ul>
       </div>
