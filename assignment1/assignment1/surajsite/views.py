@@ -206,10 +206,13 @@ def analytics2(request):
 		  dataSource['data'].append(data)
 		  n += 1	
 		  linkData = {}
-		  linkData['id'] = str(n)
+		  linkData['id'] = str(key)
 		  linkedchart = {}
 		  linkedchart['chart'] = {
 			"caption" : "Detailed " + key +" Info",
+			"subCaption": "Drilldown details",
+            "xAxisName": "Activity",
+            "yAxisName": "Count",
 			"showValues": "0",
 			"theme": "zune",
 		    "paletteColors" : "#0075c2",
@@ -246,10 +249,10 @@ def analytics2(request):
 		  	arrDara = {}
 		  	if str(each[val]).strip() == '':
 		  		each[val] = "Undefined"
-			# arrDara['label'] = str(each[val])
-			# arrDara['value'] = int(each['total'])
-			arrDara['label'] = "Ra"
-			arrDara['value'] = n
+			arrDara['label'] = str(each[val])
+			arrDara['value'] = int(each['total'])
+			# arrDara['label'] = "Ra"
+			# arrDara['value'] = n
 			linkedchart['data'].append(arrDara)
 
 		  linkData['linkedchart'] = linkedchart
