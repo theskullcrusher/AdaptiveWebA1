@@ -182,7 +182,7 @@ def analytics2(request):
 			}
 
 		dataSource['data'] = []
-		#dataSource['linkeddata'] = []
+		dataSource['linkeddata'] = []
 
 		user = request.user.username
 		usr = SiteUser.objects.filter(username=user)[0]
@@ -202,56 +202,56 @@ def analytics2(request):
 		  data = {}
 		  data['label'] = key
 		  data['value'] = value
-		 #  data['link'] = 'newchart-json-'+ key
+		  data['link'] = 'newchart-json-'+ key
 		  dataSource['data'].append(data)
-		 #  n += 1	
-		 #  linkData = {}
-		 #  linkData['id'] = n
-		 #  linkedchart = {}
-		 #  linkedchart['chart'] = {
-			# "caption" : "Detailed " + key +" Info",
-			# "showValues": "0",
-			# "theme": "zune",
-		 #    "paletteColors" : "#0075c2",
-		 #    "bgColor" : "#ffffff",
-		 #    "borderAlpha": "20",
-		 #    "canvasBorderAlpha": "0",
-		 #    "usePlotGradientColor": "0",
-		 #    "plotBorderAlpha": "10",
-		 #    "showXAxisLine": "1",
-		 #    "xAxisLineColor" : "#999999",
-		 #    "showValues": "0",
-		 #    "divlineColor" : "#999999",
-		 #    "divLineIsDashed" : "1",
-		 #    "showAlternateHGridColor" : "0"
-			# }
+		  n += 1	
+		  linkData = {}
+		  linkData['id'] = str(n)
+		  linkedchart = {}
+		  linkedchart['chart'] = {
+			"caption" : "Detailed " + key +" Info",
+			"showValues": "0",
+			"theme": "zune",
+		    "paletteColors" : "#0075c2",
+		    "bgColor" : "#ffffff",
+		    "borderAlpha": "20",
+		    "canvasBorderAlpha": "0",
+		    "usePlotGradientColor": "0",
+		    "plotBorderAlpha": "10",
+		    "showXAxisLine": "1",
+		    "xAxisLineColor" : "#999999",
+		    "showValues": "0",
+		    "divlineColor" : "#999999",
+		    "divLineIsDashed" : "1",
+		    "showAlternateHGridColor" : "0"
+			}
 
-		 #  linkedchart['data'] = []
+		  linkedchart['data'] = []
 		  
-		 #  val = ""
-		 #  if key == 'Action':
-		 #  	objects = UserLogs.objects.filter(user=usr).values('action').annotate(total=Count('action')).order_by('total')
-		 #  	val = "action"
-		 #  elif key == 'Object':
-		 #  	objects = UserLogs.objects.filter(user=usr).values('obj').annotate(total=Count('obj')).order_by('total')
-		 #  	val = "obj"
-		 #  elif key == 'Link':
-		 #  	objects = UserLogs.objects.filter(user=usr).values('link').annotate(total=Count('link')).order_by('total')
-		 #  	val = "link"
-		 #  elif key == 'ParentLink':
-		 #  	objects = UserLogs.objects.filter(user=usr).values('main_link').annotate(total=Count('main_link')).order_by('total')
-		 #  	val = "main_link"
+		  val = ""
+		  if key == 'Action':
+		  	objects = UserLogs.objects.filter(user=usr).values('action').annotate(total=Count('action')).order_by('total')
+		  	val = "action"
+		  elif key == 'Object':
+		  	objects = UserLogs.objects.filter(user=usr).values('obj').annotate(total=Count('obj')).order_by('total')
+		  	val = "obj"
+		  elif key == 'Link':
+		  	objects = UserLogs.objects.filter(user=usr).values('link').annotate(total=Count('link')).order_by('total')
+		  	val = "link"
+		  elif key == 'ParentLink':
+		  	objects = UserLogs.objects.filter(user=usr).values('main_link').annotate(total=Count('main_link')).order_by('total')
+		  	val = "main_link"
 		  
-		 #  for each in objects:
-		 #  	arrDara = {}
-		 #  	if str(each[val]).strip() == '':
-		 #  		each[val] = "Undefined"
-			# arrDara['label'] = each[val]
-			# arrDara['value'] = each['total']
-			# linkedchart['data'].append(arrDara)
+		  for each in objects:
+		  	arrDara = {}
+		  	if str(each[val]).strip() == '':
+		  		each[val] = "Undefined"
+			arrDara['label'] = each[val]
+			arrDara['value'] = each['total']
+			linkedchart['data'].append(arrDara)
 
-		 #  linkData['linkedchart'] = linkedchart
-		 #  dataSource['linkeddata'].append(linkData)
+		  linkData['linkedchart'] = linkedchart
+		  dataSource['linkeddata'].append(linkData)
 
 		column2D = FusionCharts("column2D", "ex1" , "600", "350", "chart-1", "json", dataSource)
 		return render(request, 'templates/analytics2.html', {'output': column2D.render()})
