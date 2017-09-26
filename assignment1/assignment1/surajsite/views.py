@@ -203,7 +203,7 @@ def analytics2(request):
 		  data['label'] = key
 		  data['value'] = value
 		 #  data['link'] = 'newchart-json-'+ key
-		 #  dataSource['data'].append(data)
+		   dataSource['data'].append(data)
 		 #  n += 1	
 		 #  linkData = {}
 		 #  linkData['id'] = n
