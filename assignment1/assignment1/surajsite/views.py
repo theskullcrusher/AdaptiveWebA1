@@ -147,7 +147,6 @@ def analytics(request):
 
 		response = render_to_response('templates/analytics.html', data,
 							  context_instance=RequestContext(request))
-		print response
 		return response    
 	except Exception as e:
 		print e
@@ -228,8 +227,8 @@ def analytics2(request):
 		  dataSource['linkeddata'].append(linkData)
 
 		column2D = FusionCharts("column2D", "ex1" , "600", "350", "chart-1", "json", dataSource)
-		return render('templates/analytics2.html', {'output': column2D.render()}, context_instance=RequestContext(request))
+		return render_to_response('templates/analytics2.html', {'output': column2D.render()}, context_instance=RequestContext(request))
 	except Exception as e:
 		print e
-		logger.debug(e)
-		logging.warning(e)
+		#logger.debug(e)
+		#logging.warning(e)
