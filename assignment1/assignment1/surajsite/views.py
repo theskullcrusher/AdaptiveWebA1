@@ -228,27 +228,27 @@ def analytics2(request):
 
 		  linkedchart['data'] = []
 		  
-		 #  val = ""
-		 #  if key == 'Action':
-		 #  	objects = UserLogs.objects.filter(user=usr).values('action').annotate(total=Count('action')).order_by('total')
-		 #  	val = "action"
-		 #  elif key == 'Object':
-		 #  	objects = UserLogs.objects.filter(user=usr).values('obj').annotate(total=Count('obj')).order_by('total')
-		 #  	val = "obj"
-		 #  elif key == 'Link':
-		 #  	objects = UserLogs.objects.filter(user=usr).values('link').annotate(total=Count('link')).order_by('total')
-		 #  	val = "link"
-		 #  elif key == 'ParentLink':
-		 #  	objects = UserLogs.objects.filter(user=usr).values('main_link').annotate(total=Count('main_link')).order_by('total')
-		 #  	val = "main_link"
+		  val = ""
+		  if key == 'Action':
+		  	objects = UserLogs.objects.filter(user=usr).values('action').annotate(total=Count('action')).order_by('total')
+		  	val = "action"
+		  elif key == 'Object':
+		  	objects = UserLogs.objects.filter(user=usr).values('obj').annotate(total=Count('obj')).order_by('total')
+		  	val = "obj"
+		  elif key == 'Link':
+		  	objects = UserLogs.objects.filter(user=usr).values('link').annotate(total=Count('link')).order_by('total')
+		  	val = "link"
+		  elif key == 'ParentLink':
+		  	objects = UserLogs.objects.filter(user=usr).values('main_link').annotate(total=Count('main_link')).order_by('total')
+		  	val = "main_link"
 		  
-		 #  for each in objects:
-		 #  	arrDara = {}
-		 #  	if str(each[val]).strip() == '':
-		 #  		each[val] = "Undefined"
-			# arrDara['label'] = each[val]
-			# arrDara['value'] = each['total']
-			# linkedchart['data'].append(arrDara)
+		  for each in objects:
+		  	arrDara = {}
+		  	if str(each[val]).strip() == '':
+		  		each[val] = "Undefined"
+			arrDara['label'] = str(each[val])
+			arrDara['value'] = int(each['total'])
+			linkedchart['data'].append(arrDara)
 
 		  linkData['linkedchart'] = linkedchart
 		  dataSource['linkeddata'].append(linkData)
