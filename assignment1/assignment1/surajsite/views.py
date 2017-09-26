@@ -167,12 +167,14 @@ def charts(chart_type, chart_no, flag, request):
 	dataSource = {}
 	if flag == 1:
 		caption = "User Statistics"
-	else:
+		subcaption = "Your Activity"
+	elif flag == 2:
 		caption = "All Users' Statistics"
+		subcaption = ""
 
 	dataSource['chart'] = { 
 		"caption": caption,
-		"subCaption": "Your Activity",
+		"subCaption": subcaption,
 		"xAxisName": "Activity Type",
 		"yAxisName": "Count",
 		"paletteColors" : "#0075c2",
@@ -205,7 +207,7 @@ def charts(chart_type, chart_no, flag, request):
 		main_link_c = main_link.distinct().count()
 		action = UserLogs.objects.filter(user=usr).values_list('action')
 		action_c = action.distinct().count()
-	else:
+	elif flag == 2:
 		obj = UserLogs.objects.all().values_list('obj')
 		obj_c = obj.distinct().count()
 		link = UserLogs.objects.all().values_list('link')
@@ -266,7 +268,7 @@ def charts(chart_type, chart_no, flag, request):
 		  elif key == 'ParentLink':
 			objects = UserLogs.objects.filter(user=usr).values('main_link').annotate(total=Count('main_link')).order_by('total')
 			val = "main_link"
-	  else:
+	  elif flag == 2:
 		  if key == 'Action':
 			objects = UserLogs.objects.all().values('action').annotate(total=Count('action')).order_by('total')
 			val = "action"
