@@ -147,6 +147,22 @@ def analytics(request):
 		data1['chartcontainer1'] = "piechart_container1"
 		data1['extra1'] = deepcopy(data1['extra'])
 
+
+		usr_count = SiteUser.objects.all().count()
+		xdata2 = []
+		ydata2 = []
+		for obj in objs_all:
+			xdata2.append(str(obj['action']))
+			ydata2.append(float(obj['total'])/usr_count)		
+		chartdata2 = {'x': xdata2, 'y1': ydata2, 'extra1': extra_serie}
+		charttype2 = "pieChart"
+
+		data1['charttype2'] = charttype2
+		data1['chartdata2'] = chartdata2
+		data1['chartcontainer2'] = "piechart_container2"
+		data1['extra2'] = deepcopy(data1['extra'])
+
+
 		# response = render_to_response('templates/analytics.html', data1,
 		# 					  context_instance=RequestContext(request))
 		# return response

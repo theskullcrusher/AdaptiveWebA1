@@ -89,6 +89,7 @@
   {% include_chart_jscss %}
   {% load_chart charttype chartdata chartcontainer extra %}
   {% load_chart charttype1 chartdata1 chartcontainer1 extra1 %}
+  {% load_chart charttype2 chartdata2 chartcontainer2 extra2 %}
   <h1>SurajShah (1211235204) AdaptiveWeb CSE591 Assignment 2</h1>
   {% if user.is_authenticated %}
   Hi {{ user.username }}!
@@ -111,9 +112,11 @@
   <div id="tab1" class="tabcontent">
     <ul>
       <li><h1>User Actions V/S Count</h1>
-        {% include_container chartcontainer 400 500 %}</li>
+        {% include_container chartcontainer 350 400 %}</li>
         <li><h1>All Users' Actions V/S Count</h1>
-          {% include_container chartcontainer1 400 500 %}</li>
+          {% include_container chartcontainer1 350 400 %}</li>
+          <li><h1>Average User's Actions V/S Count</h1>
+          {% include_container chartcontainer2 350 400 %}</li>
         </ul>
       </div>
       <div id="tab2" class="tabcontent">
