@@ -85,11 +85,11 @@
     border-top: none;
   }
   </style>
-  <title>{% block title %}SurajShah (1211235204) AdaptiveWeb CSE591 Assignment 1{% endblock %}</title>
+  <title>{% block title %}SurajShah (1211235204) AdaptiveWeb CSE591 Assignment 2{% endblock %}</title>
   {% include_chart_jscss %}
   {% load_chart charttype chartdata chartcontainer extra %}
   {% load_chart charttype1 chartdata1 chartcontainer1 extra1 %}
-  <h1>SurajShah (1211235204) AdaptiveWeb CSE591 Assignment 1</h1>
+  <h1>SurajShah (1211235204) AdaptiveWeb CSE591 Assignment 2</h1>
   {% if user.is_authenticated %}
   Hi {{ user.username }}!
   <a href="{% url 'logout' %}">logout</a>
@@ -117,7 +117,11 @@
         </ul>
       </div>
       <div id="tab2" class="tabcontent">
-        <div id="chart-1">{{ output|safe }}</div>
+        <ul>
+      <li><div id="chart-1">{{ output|safe }}</div></li>
+        <li><div id="chart-1">{{ output1|safe }}</div></li>
+        </ul>
+        
       </div>
 
     </body>
