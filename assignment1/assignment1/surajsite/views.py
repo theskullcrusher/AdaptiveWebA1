@@ -251,7 +251,7 @@ def analytics2(request):
 		  	if str(each[val]).strip() == '' or str(each[val]).strip() == '#':
 		  		each[val] = "Undefined"
 			each[val] = str(each[val]).replace("https://stackoverflow.com","")
-			cleanString = re.sub('\W+/.%','', each[val])
+			cleanString = re.sub('\W+/.','', each[val])
 			arrDara['label'] = cleanString
 			arrDara['value'] = int(each['total'])
 			# arrDara['label'] = "Ra"
