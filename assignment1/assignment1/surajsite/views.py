@@ -249,6 +249,7 @@ def analytics2(request):
 		  	arrDara = {}
 		  	if str(each[val]).strip() == '':
 		  		each[val] = "Undefined"
+		  	each[val] = str(each[val]).replace("https://stackoverflow.com","")
 			arrDara['label'] = str(each[val])
 			arrDara['value'] = int(each['total'])
 			# arrDara['label'] = "Ra"
