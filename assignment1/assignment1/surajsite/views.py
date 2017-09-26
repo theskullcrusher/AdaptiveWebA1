@@ -247,7 +247,7 @@ def analytics2(request):
 		  
 		  for each in objects:
 		  	arrDara = {}
-		  	if str(each[val]).strip() == '':
+		  	if str(each[val]).strip() == '' or str(each[val]).strip() == '#':
 		  		each[val] = "Undefined"
 			each[val] = str(each[val]).replace("https://stackoverflow.com","")
 			arrDara['label'] = str(each[val])
