@@ -92,7 +92,7 @@ def record(request):
 	return JsonResponse(responseData)
   except Exception as e:
 	print e
-	logger.debug(e)
+	#logger.debug(e)
 
 
 @login_required(login_url='/login/')
