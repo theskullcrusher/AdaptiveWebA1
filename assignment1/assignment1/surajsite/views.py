@@ -193,15 +193,15 @@ def analytics2(request):
 		action_c = action.distinct().count()
 
 		#Add one with timestamp
-
+		n = 0
 		temp = {"Action":action_c,"Object":obj_c,"Link":link_c,"ParentLink":main_link_c}		
-		for n, key, value in enumerate(temp.iteritems()):
+		for key, value in temp.iteritems():
 		  data = {}
 		  data['label'] = key
 		  data['value'] = value
 		  data['link'] = 'newchart-json-'+ key
 		  dataSource['data'].append(data)
-	
+		  n += 1	
 		  linkData = {}
 		  linkData['id'] = n
 		  linkedchart = {}
