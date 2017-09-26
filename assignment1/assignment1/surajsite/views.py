@@ -151,8 +151,8 @@ def analytics(request):
 		# 					  context_instance=RequestContext(request))
 		# return response
 		# else:
-		data1['output'] = charts("column2D", 1, request)
-		data1['output1'] = charts("column2D", 2, request)
+		data1['output'] = charts("column2D", "chart-1", 1, request)
+		data1['output1'] = charts("column2D","chart-2", 2, request)
 		return render_to_response('templates/analytics.html', data1, context_instance=RequestContext(request))
 
 	except Exception as e:
@@ -162,7 +162,7 @@ def analytics(request):
 		
 
 
-def charts(chart_type, flag, request):
+def charts(chart_type, chart_no, flag, request):
 	"Get charts for DRY"
 	dataSource = {}
 	if flag == 1:
@@ -294,5 +294,5 @@ def charts(chart_type, flag, request):
 	  linkData['linkedchart'] = linkedchart
 	  dataSource['linkeddata'].append(linkData)
 
-	column2D = FusionCharts(chart_type, "ex1" , "600", "350", "chart-1", "json", dataSource)
+	column2D = FusionCharts(chart_type, "ex1" , "600", "350", chart_no, "json", dataSource)
 	return column2D.render()
