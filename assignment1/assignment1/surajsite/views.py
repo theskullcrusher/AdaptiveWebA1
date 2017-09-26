@@ -246,10 +246,7 @@ def analytics(request):
 				cleanString = re.sub('\W+','', each[val])
 				arrDara['label'] = cleanString
 				arrDara['value'] = int(each['total'])
-				# arrDara['label'] = "Ra"
-				# arrDara['value'] = n
 				linkedchart['data'].append(arrDara)
-				print arrDara
 
 			  linkData['linkedchart'] = linkedchart
 			  dataSource['linkeddata'].append(linkData)
