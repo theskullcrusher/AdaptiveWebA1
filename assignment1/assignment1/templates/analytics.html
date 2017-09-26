@@ -6,12 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
- 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    
   <style type="text/css">
-   table   { display: table; border-collapse: collapse; padding: 10; table-layout: fixed; word-wrap:break-word; width: 100%}
-   tr  { display: table-row; border: 1px solid #000; text-align: center;}
-   td { display: table-cell; text-align: center;}
+  table   { display: table; border-collapse: collapse; padding: 10; table-layout: fixed; word-wrap:break-word; width: 100%}
+  tr  { display: table-row; border: 1px solid #000; text-align: center;}
+  td { display: table-cell; text-align: center;}
   html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   html {
     padding: 50px 30px 50px 80px;
@@ -20,36 +19,37 @@
     text-align: justify;
   }
   li {
-      display: inline-block;
-      margin-right: -.25em;
-      position: relative;
-      top: 1.25em;
+    display: inline-block;
+    margin-right: -.25em;
+    position: relative;
+    top: 1.25em;
   }
   </style>
   <title>{% block title %}SurajShah (1211235204) AdaptiveWeb CSE591 Assignment 1{% endblock %}</title>
-    {% include_chart_jscss %}
-    {% load_chart charttype chartdata chartcontainer extra %}
-    {% load_chart charttype1 chartdata1 chartcontainer1 extra1 %}
-    <h1>SurajShah (1211235204) AdaptiveWeb CSE591 Assignment 1</h1>
-    {% if user.is_authenticated %}
-      Hi {{ user.username }}!
-      <a href="{% url 'logout' %}">logout</a>
-    {% else %}
-      <a href="{% url 'login' %}">login</a>
-    {% endif %}
+  {% include_chart_jscss %}
+  {% load_chart charttype chartdata chartcontainer extra %}
+  {% load_chart charttype1 chartdata1 chartcontainer1 extra1 %}
+  <h1>SurajShah (1211235204) AdaptiveWeb CSE591 Assignment 1</h1>
+  {% if user.is_authenticated %}
+  Hi {{ user.username }}!
+  <a href="{% url 'logout' %}">logout</a>
+  {% else %}
+  <a href="{% url 'login' %}">login</a>
+  {% endif %}
 </head> <hr>
-{% if user.is_authenticated %}
+<body>
+  {% if user.is_authenticated %}
   <h2><a href="{% url 'profile' %}">Profile</a></h2>
-{% endif %}
+  {% endif %}
   <h2>Analytics</h2>
   <hr>
-<body>
 
   <ul>
     <li><h1>User Actions V/S Count</h1>
-    {% include_container chartcontainer 400 500 %}</li>
-    <li><h1>All Users' Actions V/S Count</h1>
-    {% include_container chartcontainer1 400 500 %}</li>
-  </ul>
-</body>
-</html>
+      {% include_container chartcontainer 400 500 %}</li>
+      <li><h1>All Users' Actions V/S Count</h1>
+        {% include_container chartcontainer1 400 500 %}</li>
+      </ul>
+
+        </body>
+        </html>

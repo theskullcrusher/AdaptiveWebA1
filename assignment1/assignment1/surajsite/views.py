@@ -158,54 +158,78 @@ def analytics(request):
 
 
 @login_required(login_url='/login/')
-def demo(request):
-    column2d = FusionCharts("column2d", "ex1", "600", "400", "chart-1", "json",
-    """{  
-    "chart": {
-        "caption": "Monthly Revenue for last year",
-        "subCaption": "Harry\'s Supermart",
-        "xAxisName": "Month",
-        "yAxisName": "Revenues (In USD)",
-        "numberPrefix": "$",
-        "theme": "zune"
-    },
-    "data": [{
-        "label": "Jan",
-        "value": "420000"
-    }, {
-        "label": "Feb",
-        "value": "810000"
-    }, {
-        "label": "Mar",
-        "value": "720000"
-    }, {
-        "label": "Apr",
-        "value": "550000"
-    }, {
-        "label": "May",
-        "value": "910000"
-    }, {
-        "label": "Jun",
-        "value": "510000"
-    }, {
-        "label": "Jul",
-        "value": "680000"
-    }, {
-        "label": "Aug",
-        "value": "620000"
-    }, {
-        "label": "Sep",
-        "value": "610000"
-    }, {
-        "label": "Oct",
-        "value": "490000"
-    }, {
-        "label": "Nov",
-        "value": "900000"
-    }, {
-        "label": "Dec",
-        "value": "730000"
-    }]
-	}""")
+def analytics2(request):
+	try:
+		dataSource = {}
+		dataSource['chart'] = { 
+			"caption": "User Statistics",
+	        "showValues": "0",
+	        "theme": "zune"
+			}
 
-    return render(request, 'templates/demo.html', {'output': column2d.render()})
+		dataSource['data'] = []
+		dataSource['linkeddata'] = []
+
+		user = request.user.username
+		usr = SiteUser.objects.filter(username=user)[0]
+		obj = UserLogs.objects.filter(user=usr).values_list('obj')
+		obj_c = obj.distinct().count()
+		link = UserLogs.objects.filter(user=usr).values_list('link')
+		link_c = link.distinct().count()
+		main_link = UserLogs.objects.filter(user=usr).values_list('main_link')
+		main_link_c = main_link.distinct().count()
+		action = UserLogs.objects.filter(user=usr).values_list('action')
+		action_c = action.distinct().count()
+
+		#Add one with timestamp
+
+		temp = {"Action":action_c,"Object":obj_c,"Link":link_c,"ParentLink":main_link_c}		
+		for key, value in temp.iteritems():
+		  data = {}
+		  data['label'] = key
+		  data['value'] = value
+		  data['link'] = 'newchart-json-'+ key
+		  dataSource['data'].append(data)
+	
+		  linkData = {}
+		  linkData['id'] = key
+		  linkedchart = {}
+		  linkedchart['chart'] = {
+			"caption" : "Detailed " + key +" Info",
+			"showValues": "0",
+			"theme": "zune"
+			}
+
+		  linkedchart['data'] = []
+		  
+		  val = ""
+		  if key == 'Action':
+		  	objects = UserLogs.objects.filter(user=usr).values('action').annotate(total=Count('action')).order_by('total')
+		  	val = "action"
+		  elif key == 'Object':
+		  	objects = UserLogs.objects.filter(user=usr).values('obj').annotate(total=Count('obj')).order_by('total')
+		  	val = "obj"
+		  elif key == 'Link':
+		  	objects = UserLogs.objects.filter(user=usr).values('link').annotate(total=Count('link')).order_by('total')
+		  	val = "link"
+		  elif key == 'ParentLink':
+		  	objects = UserLogs.objects.filter(user=usr).values('main_link').annotate(total=Count('main_link')).order_by('total')
+		  	val = "main_link"
+		  
+		  for each in objects:
+		  	arrDara = {}
+		  	if str(each[val]).strip() == '':
+		  		each[val] = "Undefined"
+			arrDara['label'] = each[val]
+			arrDara['value'] = each['total']
+			linkedchart['data'].append(arrDara)
+
+		  linkData['linkedchart'] = linkedchart
+		  dataSource['linkeddata'].append(linkData)
+
+		column2D = FusionCharts("column2D", "ex1" , "600", "350", "chart-1", "json", dataSource)
+		return render('templates/analytics2.html', {'output': column2D.render()}, context_instance=RequestContext(request))
+	except Exception as e:
+		print e
+		logger.debug(e)
+		logging.warning(e)

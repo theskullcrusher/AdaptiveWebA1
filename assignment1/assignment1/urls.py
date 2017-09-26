@@ -26,7 +26,7 @@ urlpatterns = [
 #    url(r'^profile/$', TemplateView.as_view(template_name='templates/index.html'), name='profile'),
     url(r'^profile/$', views.profile, name='profile'),
     url(r'^analytics/$', views.analytics, name='analytics'),
-    url(r'^demo/$', views.demo, name='demo'),
+    url(r'^analytics2/$', views.analytics2, name='analytics2'),
     url(r'^record/$', views.record, name='record'),
     url(r'^$', views.index, name='index'),
     url(r'^index/$', views.index, name='index'),
