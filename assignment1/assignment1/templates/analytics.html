@@ -11,24 +11,26 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    
   <script type="text/javascript" src="{% static "fusioncharts/fusioncharts.js" %}"></script>
   <script type="text/javascript" src="{% static "fusioncharts/themes/fusioncharts.theme.fint.js" %}"></script>
-<script type="text/javascript">
-function opentab(evt, id_) {
-    var i, tabcontent, tablinks;
+  <script type="text/javascript">
+  function opentab(evt, id_) {
+      var i, tabcontent, tablinks;
 
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+      }
 
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
 
-    document.getElementById(id_).style.display = "block";
-    evt.currentTarget.className += " active";
-}
-</script>
+      document.getElementById(id_).style.display = "block";
+      evt.currentTarget.className += " active";
+  }
+  </script>
+  <script type="text/javascript"> $(document).ready(function() { $(function() { opentab(event, 'tab1'); }); }); </script>
+
   <style type="text/css">
   table   { display: table; border-collapse: collapse; padding: 10; table-layout: fixed; word-wrap:break-word; width: 100%}
   tr  { display: table-row; border: 1px solid #000; text-align: center;}
