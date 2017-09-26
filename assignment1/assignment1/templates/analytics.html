@@ -64,7 +64,7 @@
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 4px 6px;
+    padding: 14px 16px;
     transition: 0.3s;
   }
 
@@ -81,7 +81,7 @@
   /* Style the tab content */
   .tabcontent {
     display: none;
-    padding: 4px 6px;
+    padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
   }
@@ -113,8 +113,7 @@
   <div id="tab1" class="tabcontent">
     <ul>
       <li style="padding:4px;"><h1>User Actions V/S Count</h1>
-        {% include_container chartcontainer 380 380 %}
-      </div></li>
+        {% include_container chartcontainer 380 380 %}</li>
         <li style="padding:4px;"><h1>All Users' Actions V/S Count</h1>
           {% include_container chartcontainer1 380 380 %}</li>
           <li style="padding:4px;"><h1>Average User's Actions V/S Count</h1>
