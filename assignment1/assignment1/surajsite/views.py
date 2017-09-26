@@ -246,8 +246,10 @@ def analytics2(request):
 		  	arrDara = {}
 		  	if str(each[val]).strip() == '':
 		  		each[val] = "Undefined"
-			arrDara['label'] = str(each[val])
-			arrDara['value'] = int(each['total'])
+			# arrDara['label'] = str(each[val])
+			# arrDara['value'] = int(each['total'])
+			arrDara['label'] = "Ra"
+			arrDara['value'] = n
 			linkedchart['data'].append(arrDara)
 
 		  linkData['linkedchart'] = linkedchart
