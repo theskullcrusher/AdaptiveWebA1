@@ -151,8 +151,8 @@ def analytics(request):
 		# 					  context_instance=RequestContext(request))
 		# return response
 		# else:
-		data1['output'] = charts("column2D", 1)
-		data1['output1'] = charts("column2D", 2)
+		data1['output'] = charts("column2D", 1, request)
+		data1['output1'] = charts("column2D", 2, request)
 		return render_to_response('templates/analytics.html', data1, context_instance=RequestContext(request))
 
 	except Exception as e:
@@ -162,7 +162,7 @@ def analytics(request):
 		
 
 
-def charts(chart_type, flag):
+def charts(chart_type, flag, request):
 	"Get charts for DRY"
 	dataSource = {}
 	if flag == 1:
