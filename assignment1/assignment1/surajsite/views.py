@@ -294,5 +294,5 @@ def charts(chart_type, chart_no, flag, request):
 	  linkData['linkedchart'] = linkedchart
 	  dataSource['linkeddata'].append(linkData)
 
-	column2D = FusionCharts(chart_type, chart_no , "600", "350", chart_no, "json", dataSource)
+	column2D = FusionCharts(chart_type, 'ex'+str(flag) , "600", "350", chart_no, "json", dataSource)
 	return column2D.render()
