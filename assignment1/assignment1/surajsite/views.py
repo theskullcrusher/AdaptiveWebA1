@@ -250,7 +250,7 @@ def analytics2(request):
 		  linkData['linkedchart'] = linkedchart
 		  dataSource['linkeddata'].append(linkData)
 
-		column2D = FusionCharts("column2D", "ex1" , "600", "350", "chart-1", "json", dataSource)
+		column2D = FusionCharts("column2D", "ex1" , "600", "350", "chart-1", "json", str(dataSource))
 		return render(request, 'templates/analytics2.html', {'output': column2D.render()})
 	except Exception as e:
 		print e
