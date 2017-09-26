@@ -6,11 +6,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    
   <script type="text/javascript" src="{% static "fusioncharts/fusioncharts.js" %}"></script>
   <script type="text/javascript" src="{% static "fusioncharts/themes/fusioncharts.theme.fint.js" %}"></script>
+  <script src="jquery-3.2.1.min.js"></script>
   <script type="text/javascript">
   function opentab(evt, id_) {
       var i, tabcontent, tablinks;
@@ -29,8 +31,7 @@
       evt.currentTarget.className += " active";
   }
   </script>
-  <script type="text/javascript"> $(document).ready(function() { $(function() { opentab(event, 'tab1'); }); }); </script>
-
+  <script type="text/javascript"> $(document).ready(function() { $(function() { $('.tablinks').first().click(); }); }); </script>
   <style type="text/css">
   table   { display: table; border-collapse: collapse; padding: 10; table-layout: fixed; word-wrap:break-word; width: 100%}
   tr  { display: table-row; border: 1px solid #000; text-align: center;}
