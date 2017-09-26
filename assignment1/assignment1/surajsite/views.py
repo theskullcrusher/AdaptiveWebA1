@@ -202,7 +202,7 @@ def analytics2(request):
 		  data = {}
 		  data['label'] = key
 		  data['value'] = value
-		  data['link'] = 'newchart-json-'+ key
+		  data['link'] = str(key)
 		  dataSource['data'].append(data)
 		  n += 1	
 		  linkData = {}
@@ -249,10 +249,10 @@ def analytics2(request):
 		  	arrDara = {}
 		  	if str(each[val]).strip() == '':
 		  		each[val] = "Undefined"
-			arrDara['label'] = str(each[val])
-			arrDara['value'] = int(each['total'])
-			# arrDara['label'] = "Ra"
-			# arrDara['value'] = n
+			# arrDara['label'] = str(each[val])
+			# arrDara['value'] = int(each['total'])
+			arrDara['label'] = "Ra"
+			arrDara['value'] = n
 			linkedchart['data'].append(arrDara)
 
 		  linkData['linkedchart'] = linkedchart
