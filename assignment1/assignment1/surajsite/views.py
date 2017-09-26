@@ -249,12 +249,13 @@ def analytics2(request):
 		  	arrDara = {}
 		  	if str(each[val]).strip() == '':
 		  		each[val] = "Undefined"
-		  	each[val] = str(each[val]).replace("https://stackoverflow.com","")
+			each[val] = str(each[val]).replace("https://stackoverflow.com","")
 			arrDara['label'] = str(each[val])
-			arrDara['value'] = int(each['total'])
+			arrDara['value'] = str(each['total'])
 			# arrDara['label'] = "Ra"
 			# arrDara['value'] = n
 			linkedchart['data'].append(arrDara)
+			print arrDara
 
 		  linkData['linkedchart'] = linkedchart
 		  dataSource['linkeddata'].append(linkData)
