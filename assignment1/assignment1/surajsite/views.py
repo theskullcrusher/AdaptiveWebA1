@@ -13,7 +13,6 @@ import traceback
 import logging
 logger = logging.getLogger(__name__)
 import random
-import datetime
 import time
 from django.db.models import Count, Sum, Max, Min
 from copy import deepcopy
