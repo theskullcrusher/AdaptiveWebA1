@@ -18,6 +18,7 @@ import time
 from django.db.models import Count, Sum, Max, Min
 from copy import deepcopy
 from assignment1.fusioncharts import FusionCharts
+import re
 
 class LogTable(tables.Table):
 	class Meta:
@@ -250,8 +251,9 @@ def analytics2(request):
 		  	if str(each[val]).strip() == '' or str(each[val]).strip() == '#':
 		  		each[val] = "Undefined"
 			each[val] = str(each[val]).replace("https://stackoverflow.com","")
-			arrDara['label'] = str(each[val])
-			arrDara['value'] = str(each['total'])
+			cleanString = re.sub('\W+','', each[val])
+			arrDara['label'] = cleanString
+			arrDara['value'] = int(each['total'])
 			# arrDara['label'] = "Ra"
 			# arrDara['value'] = n
 			linkedchart['data'].append(arrDara)
