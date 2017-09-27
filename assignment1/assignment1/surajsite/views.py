@@ -397,7 +397,7 @@ def chartsDragNode(chart_type, chart_no, flag, request, flag1):
 
 	if flag == 1:
 		objects = UserLogs.objects.all().values_list('obj', flat=True).distinct()
-		obj.remove('')
+		objects.remove('')
 		objects_count = objects.count()
 		users = User.objects.all()
 		users_count = users.count()
