@@ -115,6 +115,7 @@
   <div class="tab">
     <button class="tablinks" onclick="opentab(event, 'tab1')">Analysis Tab 1</button>
     <button class="tablinks" onclick="opentab(event, 'tab2')">Analysis Tab 2</button>
+    <button class="tablinks" onclick="opentab(event, 'tab3')">Analysis Tab 3</button>
   </div>
 
   <div id="tab1" class="tabcontent">
@@ -147,6 +148,16 @@
     <li><div id="chart-4">{{ output3|safe }}</div></li>
   </ul>
 </div>
+<div id="tab3" class="tabcontent">
+  <ul>
+    <li><div id="chart-5">{{ output4|safe }}</div></li>
+  </ul>
+<h3 style="padding:4px;color:red;text-align:left;">Analysis and Findings (4)</h3>
+<h4 style="padding:4px;color:blue;text-align:left;"><ul><li>4. Comparisons of a specific user's traits with general user traits along with an insight into the trends of what popular questions/links the other people are viewing would work as a recommendation system that lets the user choose general topics and view questions on them for exploration. </li><li></li></ul></h4><br>
+<h3 style="padding:4px;color:red;text-align:left;">Interactivity (3) and (4) on this tab</h3>
+<h4 style="padding:4px;color:blue;text-align:left;"><ul><li>3. Apart from hover, this tab has interactions of click on the chart, which dynamically displays another drilldown chart with data specific to the item clicked. It also has a back button, to allow coming back to the original chart.</li><li>4. The pie charts below can be dragged and pulled, rotated and looked at in terms of percentage instead of actual numbers for better comparisons.</li></ul></h4>
+</div>
+
 
 </body>
 </html>

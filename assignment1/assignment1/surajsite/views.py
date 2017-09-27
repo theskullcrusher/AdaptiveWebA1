@@ -18,6 +18,8 @@ from django.db.models import Count, Sum, Max, Min
 from copy import deepcopy
 from assignment1.fusioncharts import FusionCharts
 import re
+import random
+from django.contrib.auth.models import User
 
 class LogTable(tables.Table):
 	class Meta:
@@ -173,6 +175,9 @@ def analytics(request):
 		data1['output2'] = charts("doughnut3D", "chart-3", 1, request, 3)
 		data1['output3'] = charts("doughnut3D","chart-4", 2, request, 4)
 
+		data1['output4'] = chartsDragNode("dragnode","chart-5", 1, request, 5)
+		#data1['output5'] = chartsDragNode("dragnode","chart-6", 2, request, 6)
+
 
 		return render_to_response('templates/analytics.html', data1, context_instance=RequestContext(request))
 
@@ -318,4 +323,122 @@ def charts(chart_type, chart_no, flag, request, flag1):
 	  dataSource['linkeddata'].append(linkData)
 
 	column2D = FusionCharts(chart_type, 'ex'+str(flag1) , "600", "350", chart_no, "json", dataSource)
+	return column2D.render()
+
+
+
+def chartsDragNode(chart_type, chart_no, flag, request, flag1):
+	"Get charts for DRY"
+	dataSource = {}
+	if flag == "1":
+		caption = "User-Object Mapping"
+		subcaption = ""
+	else:
+		caption = "User-Link Mapping"
+		subcaption = ""
+
+
+	dataSource['chart'] = { 
+		"caption": caption,
+		"paletteColors" : "#0075c2, #5d8aa8, #e32636, #efdecd, #ffbf00, #ff033e, #a4c639, #b2beb5, #8db600, #7fffd4, #ff007f, #ff55a3, #5f9ea0",
+        "xaxisminvalue": "0",
+        "xaxismaxvalue": "100",
+        "yaxisminvalue": "0",
+        "yaxismaxvalue": "100",
+        "is3d": "1",
+        "showformbtn": "1",
+        "viewmode": "0",
+        "showplotborder": "1",
+        "plotborderthickness": "4",
+        "theme": "fint",
+        "showcanvasborder": "1",
+        "canvasborderalpha": "20",
+        "animation": "0"
+		}
+
+	dataSource['dataset'] = []
+	data = {}
+	data['data'] = []
+	dataSource['connectors'] = []
+	connector = 
+	{
+		"color": "#ffffff",
+		"stdthickness": "10"
+	}
+	connector['connector'] = []
+
+	colors = "#0075c2, #5d8aa8, #e32636, #efdecd, #ffbf00, #ff033e, #a4c639, #b2beb5, #8db600, #7fffd4, #ff007f, #ff55a3, #5f9ea0".split(', ')
+	connector_item = {
+				"strength": "2",
+				"from": "",
+				"to": "",
+				"color": "",
+				"arrowatstart": "0",
+				"arrowatend": "0"
+	}
+
+	data_item1 = {
+				"id": "",
+				"label": "",
+				"color": "#ffffff",
+				"x": "",
+				"y": "",
+				"radius": "25",
+				"shape": "circle"
+	}
+	data_item2 = {
+				"id": "",
+				"label": "",
+				"color": "#ffffff",
+				"x": "",
+				"y": "",
+				"radius": "40",
+				"shape": "circle"
+	}
+
+	if flag == 1:
+		objects = UserLogs.objects.all().values_list('obj', flat=True).distinct()
+		obj.remove('')
+		objects_count = objects.count()
+		users = User.objects.all()
+		users_count = users.count()
+		x_end = 800
+		y_end = 600
+		x_step = 800/(objects_count+2)
+		y_step = 600/(users_count+2)
+		x_start = x_step
+		y_start = y_step
+
+		for n, each in enumerate(objects):
+			val = deepcopy(data_item2)
+			val['id'] = val['label'] = each
+			val['x'] = x_start + n*x_step
+			val['y'] = y_start
+			data['data'].append(val)
+
+		for n, each in enumerate(users):
+			val = deepcopy(data_item1)
+			val['id'] = str(each.id)
+			val['label'] = str(each.username)
+			val['x'] = x_start 
+			val['y'] = y_start + n*y_step
+			data['data'].append(val)
+
+		for each in objects:
+			val = deepcopy(connector_item)
+			ussers = UserLogs.objects.filter(obj=each).values_list('user_id', flat=True).distinct()
+			rand_color = random.choice(colors)
+			for us in ussers:
+				val['from'] = str(us)
+				val['to'] = each
+				val['color'] = rand_color
+			connector['connector'].append(val)
+
+	else:
+		pass
+
+	dataSource['connectors'].append(connector)
+	dataSource['dataset'].append(data)
+	
+	column2D = FusionCharts(chart_type, 'ex'+str(flag1) , "800", "600", chart_no, "json", dataSource)
 	return column2D.render()
