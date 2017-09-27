@@ -430,6 +430,7 @@ def chartsDragNode(chart_type, chart_no, flag, request, flag1):
 			#print "Len of users",ussers.count()
 			rand_color = random.choice(colors)
 			for us in ussers:
+				val = deepcopy(connector_item)
 				val['to'] = str(us)
 				val['from'] = re.sub('\W+','', each)
 				val['color'] = rand_color
