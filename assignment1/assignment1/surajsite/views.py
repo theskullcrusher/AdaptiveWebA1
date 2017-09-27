@@ -167,11 +167,11 @@ def analytics(request):
 		# 					  context_instance=RequestContext(request))
 		# return response
 		# else:
-		data1['output'] = charts("column3D", "chart-1", 1, request)
-		data1['output1'] = charts("column3D","chart-2", 2, request)
+		data1['output'] = charts("column3D", "chart-1", 1, request, 1)
+		data1['output1'] = charts("column3D","chart-2", 2, request, 2)
 
-		data1['output2'] = charts("doughnut3D", "chart-3", 1, request)
-		data1['output3'] = charts("doughnut3D","chart-4", 2, request)
+		data1['output2'] = charts("doughnut3D", "chart-3", 1, request, 3)
+		data1['output3'] = charts("doughnut3D","chart-4", 2, request, 4)
 
 
 		return render_to_response('templates/analytics.html', data1, context_instance=RequestContext(request))
@@ -183,7 +183,7 @@ def analytics(request):
 		
 
 
-def charts(chart_type, chart_no, flag, request):
+def charts(chart_type, chart_no, flag, request, flag1):
 	"Get charts for DRY"
 	dataSource = {}
 	if flag == 1:
@@ -317,5 +317,5 @@ def charts(chart_type, chart_no, flag, request):
 	  linkData['linkedchart'] = linkedchart
 	  dataSource['linkeddata'].append(linkData)
 
-	column2D = FusionCharts(chart_type, 'ex'+str(flag) , "600", "350", chart_no, "json", dataSource)
+	column2D = FusionCharts(chart_type, 'ex'+str(flag1) , "600", "350", chart_no, "json", dataSource)
 	return column2D.render()
