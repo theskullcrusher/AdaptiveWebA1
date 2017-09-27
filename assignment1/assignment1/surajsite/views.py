@@ -427,11 +427,11 @@ def chartsDragNode(chart_type, chart_no, flag, request, flag1):
 		for each in objects:
 			val = deepcopy(connector_item)
 			ussers = UserLogs.objects.filter(obj=each).values_list('user_id', flat=True).distinct()
-			print "Len of users",ussers.count()
+			#print "Len of users",ussers.count()
 			rand_color = random.choice(colors)
 			for us in ussers:
-				val['from'] = str(us)
-				val['to'] = re.sub('\W+','', each)
+				val['to'] = str(us)
+				val['from'] = re.sub('\W+','', each)
 				val['color'] = rand_color
 			connector['connector'].append(val)
 
