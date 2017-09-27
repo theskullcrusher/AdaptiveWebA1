@@ -483,5 +483,5 @@ def chartsDragNode(chart_type, chart_no, flag, request, flag1):
 	dataSource['connectors'].append(connector)
 	dataSource['dataset'].append(data)
 	
-	column2D = FusionCharts(chart_type, 'ex'+str(flag1) , "1300", "1000", chart_no, "json", dataSource)
+	column2D = FusionCharts(chart_type, 'ex'+str(flag1) , "1300", "800", chart_no, "json", dataSource)
 	return column2D.render()
