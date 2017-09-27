@@ -167,10 +167,13 @@ def analytics(request):
 		# 					  context_instance=RequestContext(request))
 		# return response
 		# else:
-		data1['output'] = charts("doughnut3D", "chart-1", 1, request)
-		data1['output1'] = charts("doughnut3D","chart-2", 2, request)
+		data1['output'] = charts("column3D", "chart-1", 1, request)
+		data1['output1'] = charts("column3D","chart-2", 2, request)
 
-		
+		data1['output2'] = charts("doughnut3D", "chart-3", 3, request)
+		data1['output3'] = charts("doughnut3D","chart-4", 4, request)
+
+
 		return render_to_response('templates/analytics.html', data1, context_instance=RequestContext(request))
 
 	except Exception as e:
