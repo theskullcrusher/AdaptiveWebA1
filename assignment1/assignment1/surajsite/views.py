@@ -190,8 +190,8 @@ def charts(chart_type, chart_no, flag, request):
 		caption = "User Statistics"
 		subcaption = "Your Activity"
 	elif flag == 2:
-		caption = "All Users' Statistics"
-		subcaption = ""
+		caption = "User Statistics"
+		subcaption = "All Users"
 
 	dataSource['chart'] = { 
 		"caption": caption,
