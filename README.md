@@ -1,4 +1,5 @@
-# AdaptiveWebA1
+# AdaptiveWebAssignments
+
 0. Assignment uses Django1.8 along with its ORM to manage the mysql database
 
 1. Installing requirements(Only needed if you are setting up the repository):
@@ -16,7 +17,7 @@
  > mysqldump -uroot -psurajshah surajsite < surajsitedump.sql
 
 
-3. Instructions for testing my site:
+3. Instructions for testing my Assignment 1:
    Please install the google chrome extension that is provided to you with this repository. It is tested in the latest version of chrome 64bit on windows 10 machine. Then go the site below
 
    -Home/Login page: http://ec2-54-215-192-184.us-west-1.compute.amazonaws.com/login/
@@ -38,3 +39,9 @@
 
    -Different types of actions recorded include post, search, scroll up, scroll down, click question, click any link, star question, upvote, downvote, hover over tag, hover over upvote or downvote, etc.
 
+
+4. Instructions for testing my Assignment 2:
+   Please visit http://ec2-54-215-192-184.us-west-1.compute.amazonaws.com
+   Login using assignment 1 credentials
+   Go to the 'Analytics' page link
+   Use all 3 tabs and scroll to read analysis,comments and interact with graphs
