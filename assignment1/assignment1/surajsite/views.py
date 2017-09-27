@@ -341,27 +341,26 @@ def chartsDragNode(chart_type, chart_no, flag, request, flag1):
 	dataSource['chart'] = { 
 		"caption": caption,
 		"paletteColors" : "#0075c2, #5d8aa8, #e32636, #efdecd, #ffbf00, #ff033e, #a4c639, #b2beb5, #8db600, #7fffd4, #ff007f, #ff55a3, #5f9ea0",
-        "xaxisminvalue": "0",
-        "xaxismaxvalue": "100",
-        "yaxisminvalue": "0",
-        "yaxismaxvalue": "100",
-        "is3d": "1",
-        "showformbtn": "1",
-        "viewmode": "0",
-        "showplotborder": "1",
-        "plotborderthickness": "4",
-        "theme": "fint",
-        "showcanvasborder": "1",
-        "canvasborderalpha": "20",
-        "animation": "0"
+		"xaxisminvalue": "0",
+		"xaxismaxvalue": "100",
+		"yaxisminvalue": "0",
+		"yaxismaxvalue": "100",
+		"is3d": "1",
+		"showformbtn": "1",
+		"viewmode": "0",
+		"showplotborder": "1",
+		"plotborderthickness": "4",
+		"theme": "fint",
+		"showcanvasborder": "1",
+		"canvasborderalpha": "20",
+		"animation": "0"
 		}
 
 	dataSource['dataset'] = []
 	data = {}
 	data['data'] = []
 	dataSource['connectors'] = []
-	connector = 
-	{
+	connector = {
 		"color": "#ffffff",
 		"stdthickness": "10"
 	}
