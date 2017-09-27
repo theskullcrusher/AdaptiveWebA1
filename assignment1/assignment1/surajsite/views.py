@@ -433,7 +433,7 @@ def chartsDragNode(chart_type, chart_no, flag, request, flag1):
 				val['to'] = str(us)
 				val['from'] = re.sub('\W+','', each)
 				val['color'] = rand_color
-			connector['connector'].append(val)
+				connector['connector'].append(val)
 
 	else:
 		pass
