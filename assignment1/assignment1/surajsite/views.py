@@ -382,7 +382,7 @@ def chartsDragNode(chart_type, chart_no, flag, request, flag1):
 				"color": "#ffffff",
 				"x": "",
 				"y": "",
-				"radius": "25",
+				"radius": "20",
 				"shape": "circle"
 	}
 	data_item2 = {
@@ -391,7 +391,7 @@ def chartsDragNode(chart_type, chart_no, flag, request, flag1):
 				"color": "#ffffff",
 				"x": "",
 				"y": "",
-				"radius": "40",
+				"radius": "30",
 				"shape": "circle"
 	}
 
@@ -402,10 +402,10 @@ def chartsDragNode(chart_type, chart_no, flag, request, flag1):
 		objects_count = len(objects)
 		users = User.objects.all()
 		users_count = users.count()
-		x_end = 800
-		y_end = 600
-		x_step = 800/(objects_count+2)
-		y_step = 600/(users_count+2)
+		x_end = 1200
+		y_end = 800
+		x_step = 1200/(objects_count+2)
+		y_step = 800/(users_count+2)
 		x_start = x_step
 		y_start = y_step
 
@@ -420,8 +420,8 @@ def chartsDragNode(chart_type, chart_no, flag, request, flag1):
 			val = deepcopy(data_item1)
 			val['id'] = str(each.id)
 			val['label'] = str(each.username)
-			val['x'] = x_start 
-			val['y'] = y_start + n*y_step
+			val['x'] = x_start + n*x_step
+			val['y'] = y_end
 			data['data'].append(val)
 
 		for each in objects:
@@ -440,5 +440,5 @@ def chartsDragNode(chart_type, chart_no, flag, request, flag1):
 	dataSource['connectors'].append(connector)
 	dataSource['dataset'].append(data)
 	
-	column2D = FusionCharts(chart_type, 'ex'+str(flag1) , "800", "600", chart_no, "json", dataSource)
+	column2D = FusionCharts(chart_type, 'ex'+str(flag1) , "1200", "800", chart_no, "json", dataSource)
 	return column2D.render()
