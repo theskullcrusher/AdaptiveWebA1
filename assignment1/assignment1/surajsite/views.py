@@ -402,10 +402,10 @@ def chartsDragNode(chart_type, chart_no, flag, request, flag1):
 		objects_count = len(objects)
 		users = User.objects.all()
 		users_count = users.count()
-		x_end = 1200
-		y_end = 800
-		x_step = 1200/(objects_count+2)
-		y_step = 1200/(users_count+2)
+		x_end = 1400
+		y_end = 1400
+		x_step = 1400/(objects_count+2)
+		y_step = 1400/(users_count+2)
 		x_start = x_step
 		y_start = y_step
 
@@ -442,5 +442,5 @@ def chartsDragNode(chart_type, chart_no, flag, request, flag1):
 	dataSource['connectors'].append(connector)
 	dataSource['dataset'].append(data)
 	
-	column2D = FusionCharts(chart_type, 'ex'+str(flag1) , "1200", "800", chart_no, "json", dataSource)
+	column2D = FusionCharts(chart_type, 'ex'+str(flag1) , "1400", "1000", chart_no, "json", dataSource)
 	return column2D.render()
