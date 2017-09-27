@@ -411,7 +411,7 @@ def chartsDragNode(chart_type, chart_no, flag, request, flag1):
 
 		for n, each in enumerate(objects):
 			val = deepcopy(data_item2)
-			val['id'] = val['label'] = each
+			val['id'] = val['label'] = re.sub('\W+','', each)
 			val['x'] = x_start + n*x_step
 			val['y'] = y_start
 			data['data'].append(val)
@@ -430,7 +430,7 @@ def chartsDragNode(chart_type, chart_no, flag, request, flag1):
 			rand_color = random.choice(colors)
 			for us in ussers:
 				val['from'] = str(us)
-				val['to'] = each
+				val['to'] = re.sub('\W+','', each)
 				val['color'] = rand_color
 			connector['connector'].append(val)
 
