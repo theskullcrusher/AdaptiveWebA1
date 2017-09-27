@@ -120,7 +120,7 @@ def analytics(request):
 			"color_list": color_list
 			}
 		chartdata = {'x': xdata, 'y1': ydata, 'extra1': extra_serie}
-		charttype = "scatterChart"
+		charttype = "pieChart"
 		data1 = {
 			'charttype': charttype,
 			'chartdata': chartdata,
