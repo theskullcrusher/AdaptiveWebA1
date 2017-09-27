@@ -405,7 +405,7 @@ def chartsDragNode(chart_type, chart_no, flag, request, flag1):
 		x_end = 1200
 		y_end = 800
 		x_step = 1200/(objects_count+2)
-		y_step = 800/(users_count+2)
+		y_step = 1200/(users_count+2)
 		x_start = x_step
 		y_start = y_step
 
@@ -420,7 +420,7 @@ def chartsDragNode(chart_type, chart_no, flag, request, flag1):
 			val = deepcopy(data_item1)
 			val['id'] = str(each.id)
 			val['label'] = str(each.username)
-			val['x'] = x_start + n*x_step
+			val['x'] = x_start + n*y_step
 			val['y'] = y_end
 			data['data'].append(val)
 
