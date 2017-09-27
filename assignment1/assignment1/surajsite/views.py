@@ -167,8 +167,8 @@ def analytics(request):
 		# 					  context_instance=RequestContext(request))
 		# return response
 		# else:
-		data1['output'] = charts("column2D", "chart-1", 1, request)
-		data1['output1'] = charts("column2D","chart-2", 2, request)
+		data1['output'] = charts("doughnut3D", "chart-1", 1, request)
+		data1['output1'] = charts("doughnut3D","chart-2", 2, request)
 		return render_to_response('templates/analytics.html', data1, context_instance=RequestContext(request))
 
 	except Exception as e:
@@ -254,7 +254,7 @@ def charts(chart_type, chart_no, flag, request):
 		"yAxisName": "Count",
 		"showValues": "0",
 		"theme": "zune",
-		"paletteColors" : "#0075c2",
+		"paletteColors" : "#0075c2, #5d8aa8, #e32636, #efdecd, #ffbf00, #ff033e, #a4c639, #b2beb5, #8db600, #7fffd4, #ff007f, #ff55a3, #5f9ea0",
 		"bgColor" : "#ffffff",
 		"borderAlpha": "20",
 		"canvasBorderAlpha": "0",
