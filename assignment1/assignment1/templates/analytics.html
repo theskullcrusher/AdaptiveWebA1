@@ -15,20 +15,20 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
   function opentab(evt, id_) {
-      var i, tabcontent, tablinks;
+    var i, tabcontent, tablinks;
 
-      tabcontent = document.getElementsByClassName("tabcontent");
-      for (i = 0; i < tabcontent.length; i++) {
-          tabcontent[i].style.display = "none";
-      }
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
 
-      tablinks = document.getElementsByClassName("tablinks");
-      for (i = 0; i < tablinks.length; i++) {
-          tablinks[i].className = tablinks[i].className.replace(" active", "");
-      }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
 
-      document.getElementById(id_).style.display = "block";
-      evt.currentTarget.className += " active";
+    document.getElementById(id_).style.display = "block";
+    evt.currentTarget.className += " active";
   }
   </script>
   <script type="text/javascript"> $(document).ready(function() { $(function() { $(document).on("click", "div.tab button:first-child", opentab(event, 'tab1')) }); }); </script>
@@ -52,7 +52,7 @@
   }
   li:last-child {
     border-right:none;
-}
+  }
   /* Style the tab */
   div.tab {
     overflow: hidden;
@@ -91,20 +91,20 @@
   }
   h3 {
    text-align: center; 
-  }
-  </style>
-  <title>{% block title %}SurajShah (1211235204) AdaptiveWeb CSE591 Assignment 2{% endblock %}</title>
-  {% include_chart_jscss %}
-  {% load_chart charttype chartdata chartcontainer extra %}
-  {% load_chart charttype1 chartdata1 chartcontainer1 extra1 %}
-  {% load_chart charttype2 chartdata2 chartcontainer2 extra2 %}
-  <h1>SurajShah (1211235204) AdaptiveWeb CSE591 Assignment 2</h1>
-  {% if user.is_authenticated %}
-  Hi {{ user.username }}!
-  <a href="{% url 'logout' %}">logout</a>
-  {% else %}
-  <a href="{% url 'login' %}">login</a>
-  {% endif %}
+ }
+ </style>
+ <title>{% block title %}SurajShah (1211235204) AdaptiveWeb CSE591 Assignment 2{% endblock %}</title>
+ {% include_chart_jscss %}
+ {% load_chart charttype chartdata chartcontainer extra %}
+ {% load_chart charttype1 chartdata1 chartcontainer1 extra1 %}
+ {% load_chart charttype2 chartdata2 chartcontainer2 extra2 %}
+ <h1>SurajShah (1211235204) AdaptiveWeb CSE591 Assignment 2</h1>
+ {% if user.is_authenticated %}
+ Hi {{ user.username }}!
+ <a href="{% url 'logout' %}">logout</a>
+ {% else %}
+ <a href="{% url 'login' %}">login</a>
+ {% endif %}
 </head> <hr>
 <body>
   {% if user.is_authenticated %}
@@ -118,26 +118,26 @@
   </div>
 
   <div id="tab1" class="tabcontent">
-    <h3 style="padding:4px;color:red;">Analysis and Findings (1), (2) and (3)</h3>
-    <h4 style="padding:4px;color:blue;"><ul><li>The pattern I found for most users was mostly 1 drilldown in clicks once the answer to a question was found. This tells me that the user is more likely to make a google search and then visit stackoverflow for the problem's answer rather than use the website's search feature</li><li>The large use of carefully captured scrolldown tells me that the user is more like to look for the green tick mark as the correct marked answer to the question</li><li>The comparison between scrollup and scrolldown shows that a user generally reads on the comments while scrolling down and is less probable to go up - might be just in case they want to look at the specific part of a long question do the scrollup again</li></ul><br>This chart shows us the navigation patterns of a user - whether he/she clicks and goes deeper into a link or whether he/she prefers to hover over a tag to look at its details like no_of_questions_with_that_tag, no_of_stars, etc. Another interesting finding was a user who hovers a lot is probably new to the site and keeps on trying to understand the terminology of each of the items by hovering over them more than clicking and reading stuff</h4><br>
-    <h3 style="padding:4px;color:red;">Interactivity on this tab</h3>
-    <h4 style="padding:4px;color:blue;"><ul><li>1. Hover over pieChart portions for details</li><br><li>2. Click on the labels on top of the chart to add or remove them from pieChart. Double click de-selects all other items.</li></ul></h4>
     <ul>
       <li style="padding:4px;"><h3>User Actions V/S Count</h3>
         {% include_container chartcontainer 400 500 %}</li>
         <li style="padding:4px;"><h3>All Users' Actions V/S Count</h3>
           {% include_container chartcontainer1 400 500 %}</li>
 <!--          <li style="padding:4px;"><h3>Average User's Actions V/S Count</h3>
-          {% include_container chartcontainer2 350 350 %}</li> -->
-        </ul>
-      </div>
-      <div id="tab2" class="tabcontent">
-        <ul>
-      <li><div id="chart-1">{{ output|safe }}</div></li>
-        <li><div id="chart-2">{{ output1|safe }}</div></li>
-        </ul>
-        
-      </div>
+  {% include_container chartcontainer2 350 350 %}</li> -->
+</ul>
+<h3 style="padding:4px;color:red;">Analysis and Findings (1), (2) and (3)</h3>
+<h4 style="padding:4px;color:blue;"><ul><li>The pattern I found for most users was mostly 1 drilldown in clicks once the answer to a question was found. This tells me that the user is more likely to make a google search and then visit stackoverflow for the problem's answer rather than use the website's search feature</li><li>The large use of carefully captured scrolldown tells me that the user is more like to look for the green tick mark as the correct marked answer to the question</li><li>The comparison between scrollup and scrolldown shows that a user generally reads on the comments while scrolling down and is less probable to go up - might be just in case they want to look at the specific part of a long question do the scrollup again</li></ul><br>This chart shows us the navigation patterns of a user - whether he/she clicks and goes deeper into a link or whether he/she prefers to hover over a tag to look at its details like no_of_questions_with_that_tag, no_of_stars, etc. Another interesting finding was a user who hovers a lot is probably new to the site and keeps on trying to understand the terminology of each of the items by hovering over them more than clicking and reading stuff</h4><br>
+<h3 style="padding:4px;color:red;">Interactivity on this tab</h3>
+<h4 style="padding:4px;color:blue;"><ul><li>1. Hover over pieChart portions for details</li><br><li>2. Click on the labels on top of the chart to add or remove them from pieChart. Double click de-selects all other items.</li></ul></h4>
+</div>
+<div id="tab2" class="tabcontent">
+  <ul>
+    <li><div id="chart-1">{{ output|safe }}</div></li>
+    <li><div id="chart-2">{{ output1|safe }}</div></li>
+  </ul>
+  
+</div>
 
-    </body>
-    </html>
+</body>
+</html>
