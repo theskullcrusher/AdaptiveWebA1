@@ -176,7 +176,7 @@ def analytics(request):
 		data1['output3'] = charts("doughnut3D","chart-4", 2, request, 4)
 
 		data1['output4'] = chartsDragNode("dragnode","chart-5", 1, request, 5)
-		#data1['output5'] = chartsDragNode("dragnode","chart-6", 2, request, 6)
+		data1['output5'] = chartsDragNode("dragnode","chart-6", 2, request, 6)
 
 
 		return render_to_response('templates/analytics.html', data1, context_instance=RequestContext(request))
@@ -437,7 +437,46 @@ def chartsDragNode(chart_type, chart_no, flag, request, flag1):
 				connector['connector'].append(val)
 
 	else:
-		pass
+		objects = UserLogs.objects.all().values_list('main_link', flat=True).distinct()
+		objects = list(objects)
+		objects.remove('')
+		objects_count = len(objects)
+		users = User.objects.all()
+		users_count = users.count()
+		x_end = 1400
+		y_end = 1400
+		x_step = 1400/(objects_count+2)
+		y_step = 1400/(users_count+2)
+		x_start = x_step
+		y_start = y_step
+
+		for n, each in enumerate(objects):
+			val = deepcopy(data_item2)
+			val['id'] = val['label'] = re.sub('\W+','', each)
+			val['x'] = x_start + n*x_step
+			val['y'] = y_start
+			data['data'].append(val)
+
+		for n, each in enumerate(users):
+			val = deepcopy(data_item1)
+			val['id'] = str(each.id)
+			val['label'] = str(each.username)
+			val['x'] = x_start + n*y_step
+			val['y'] = y_end
+			data['data'].append(val)
+
+		for each in objects:
+			val = deepcopy(connector_item)
+			ussers = UserLogs.objects.filter(main_link=each).values_list('user_id', flat=True).distinct()
+			#print "Len of users",ussers.count()
+			rand_color = random.choice(colors)
+			for us in ussers:
+				val = deepcopy(connector_item)
+				val['to'] = str(us)
+				val['from'] = re.sub('\W+','', each)
+				val['color'] = rand_color
+				connector['connector'].append(val)
+		
 
 	dataSource['connectors'].append(connector)
 	dataSource['dataset'].append(data)
