@@ -167,8 +167,8 @@ def analytics(request):
 		# 					  context_instance=RequestContext(request))
 		# return response
 		# else:
-		data1['output'] = charts("dragnode", "chart-1", 1, request)
-		data1['output1'] = charts("dragnode","chart-2", 2, request)
+		data1['output'] = charts("doughnut3D", "chart-1", 1, request)
+		data1['output1'] = charts("doughnut3D","chart-2", 2, request)
 
 		
 		return render_to_response('templates/analytics.html', data1, context_instance=RequestContext(request))
