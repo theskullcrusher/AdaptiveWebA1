@@ -362,7 +362,7 @@ def chartsDragNode(chart_type, chart_no, flag, request, flag1):
 	dataSource['connectors'] = []
 	connector = {
 		"color": "#ffffff",
-		"stdthickness": "10"
+		"stdthickness": "3"
 	}
 	connector['connector'] = []
 
@@ -382,7 +382,7 @@ def chartsDragNode(chart_type, chart_no, flag, request, flag1):
 				"color": "#ffffff",
 				"x": "",
 				"y": "",
-				"radius": "20",
+				"radius": "15",
 				"shape": "circle"
 	}
 	data_item2 = {
@@ -391,7 +391,7 @@ def chartsDragNode(chart_type, chart_no, flag, request, flag1):
 				"color": "#ffffff",
 				"x": "",
 				"y": "",
-				"radius": "30",
+				"radius": "25",
 				"shape": "circle"
 	}
 
