@@ -28,10 +28,10 @@ def search_index(search):
 #		body = {"query": {"match": {"wikibooks.content":search}}, 
 #			"_source": ["wikibooks.title","wikibooks.content", "wikibooks.url"]
 #			}
-                body = {"query": {"multi_match": {"query":search, "fields":["wikibooks.content","wikibooks.subdata.content"]}}
-#                        "_source": ["wikibooks.title","wikibooks.content", "wikibooks.url", "wikibooks."]
+#				"_source": ["wikibooks.title","wikibooks.content", "wikibooks.url", "wikibooks."]
+                body = {"query": {"multi_match": {"query":search, "fields":["content","title"]}}
                         }
-#		sub_body = {"query": {'match':{'wikibooks.subdata.content':search}}, 
+#				sub_body = {"query": {'match':{'wikibooks.subdata.content':search}}, 
 #                        "_source": ["wikibooks.subdata.content", "wikibooks.subdata.title"]
 #                        }
 		res = es.search(index='wikibooks',body=body)	
