@@ -10,11 +10,43 @@
  <h2><a href="{% url 'profile' %}">Profile</a></h2>
  <h2><a href="{% url 'analytics' %}">Analytics</a></h2>
 {% endif %}
+
+<script type="text/javascript">
+function toggle(id) {
+  var e = document.getElementById(id);
+  if(e.style.display == 'block')
+    e.style.display = 'none';
+  else
+    e.style.display = 'block';
+}
+</script>
+<style type="text/css">
+a {      
+	 background:none!important;
+     color:inherit;
+     border:none; 
+     padding:0!important;
+     font: inherit;
+     /*border is optional*/
+     border-bottom:1px solid #444; 
+     cursor: pointer; }
+.main {
+  display: none;
+}
+</style>
   <h2>Recommendations</h2>
   <hr>
-  <h4>Java Wikibook top content-based recommendations for input data</h4>
-  <h4><b>Why do you decide to log user actions?</b></h4>
-  <p><i>User actions give information about the behaviour of a user, his thinking, the prominent sections of a user interface and tons of other information that can be fed to intelligent systems that learn each user's special traits, likings, interests and help better serve the information that's available for the user, personalized to the specific user, dynamically, meaning that the user model keeps on evolving. Thus, logging user actions is an important input for an adaptive system with regards to implicit user information collection.</i></p>
-  <hr><br>
+  <div id="1"><a href="#" id="block" onclick="toggle('content1');"></a><pre class="main" id="content1" hidden >{{ content1 }}</pre></div>
+  <div id="2"><a href="#" id="block" onclick="toggle('content2');"></a><pre class="main" id="content2" hidden >{{ content2 }}</pre></div>
+  <div id="3"><a href="#" id="block" onclick="toggle('content3');"></a><pre class="main" id="content3" hidden >{{ content3 }}</pre></div>
+  <div id="4"><a href="#" id="block" onclick="toggle('content4');"></a><pre class="main" id="content4" hidden >{{ content4 }}</pre></div>
+  <div id="5"><a href="#" id="block" onclick="toggle('content5');"></a><pre class="main" id="content5" hidden >{{ content5 }}</pre></div>
+  <div id="6"><a href="#" id="block" onclick="toggle('content6');"></a><pre class="main" id="content6" hidden >{{ content6 }}</pre></div>
+  <div id="7"><a href="#" id="block" onclick="toggle('content7');"></a><pre class="main" id="content7" hidden >{{ content7 }}</pre></div>
+  <div id="8"><a href="#" id="block" onclick="toggle('content8');"></a><pre class="main" id="content8" hidden >{{ content8 }}</pre></div>
+  <div id="9"><a href="#" id="block" onclick="toggle('content9');"></a><pre class="main" id="content9" hidden >{{ content9 }}</pre></div>
+  <div id="10"><a href="#" id="block" onclick="toggle('content10');"></a><pre class="main" id="content10" hidden >{{ content10 }}</pre></div>
+
+<br>
 <br> <hr> <br>
 {% endblock %}

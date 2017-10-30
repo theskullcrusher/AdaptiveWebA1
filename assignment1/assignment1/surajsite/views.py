@@ -21,6 +21,7 @@ from assignment1.assign3_utils import utils
 import re
 import random
 from django.contrib.auth.models import User
+import csv
 
 class LogTable(tables.Table):
 	class Meta:
@@ -500,8 +501,29 @@ def recommendations(request):
 		user = request.user.username
 		usr = SiteUser.objects.filter(username=user)[0]
 
+		i = 0
+		data = {}
+		for i in range(1,11):
+			data["content"+str(i)] = ""
 
-		return render_to_response('templates/recommendations.html', {}, context_instance=RequestContext(request))
+		input_ = []
+		with open('../assign3_utils/data_aw17f.csv','r') as f:
+			fi = csv.reader(f)
+			for n, row in enumerate(fi):
+				if n == 0:
+					continue
+				input_.append(row[1]+row[2])
+
+		output = []
+		for each in input_:
+			val = utils.search_index(each)
+			val = [doc for doc in val['hits']['hits']]
+			if len(val)>10:
+				val = val[:10]
+
+
+
+		return render_to_response('templates/recommendations.html', data, context_instance=RequestContext(request))
 
 	except Exception as e:
 		print e
