@@ -8,6 +8,7 @@ django-nvd3==0.9.7
 django-bower==5.2.0
 enum34==1.0.4
 gunicorn==19.7.1
+elasticsearch==5.4.0
 idna==2.0
 ipaddress==1.0.14
 ipython==4.0.0
