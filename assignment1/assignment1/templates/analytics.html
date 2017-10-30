@@ -109,6 +109,7 @@
 <body>
   {% if user.is_authenticated %}
   <h2><a href="{% url 'profile' %}">Profile</a></h2>
+  <h2><a href="{% url 'recommendations' %}">Recommendations</a></h2>
   {% endif %}
   <h2>Analytics</h2>
   <hr>

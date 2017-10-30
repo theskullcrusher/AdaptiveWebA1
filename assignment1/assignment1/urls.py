@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^analytics/$', views.analytics, name='analytics'),
 #    url(r'^analytics2/$', views.analytics2, name='analytics2'),
     url(r'^record/$', views.record, name='record'),
+    url(r'^recommendations/$', views.recommendations, name='recommendations'),
     url(r'^$', views.index, name='index'),
     url(r'^index/$', views.index, name='index'),
     url(r'^admin/', admin.site.urls),

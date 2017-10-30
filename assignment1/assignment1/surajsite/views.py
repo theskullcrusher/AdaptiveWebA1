@@ -17,6 +17,7 @@ import time
 from django.db.models import Count, Sum, Max, Min
 from copy import deepcopy
 from assignment1.fusioncharts import FusionCharts
+from assignment1.assign3_utils import utils
 import re
 import random
 from django.contrib.auth.models import User
@@ -485,3 +486,24 @@ def chartsDragNode(chart_type, chart_no, flag, request, flag1):
 	
 	column2D = FusionCharts(chart_type, 'ex'+str(flag1) , "1300", "800", chart_no, "json", dataSource)
 	return column2D.render()
+
+
+
+
+@login_required(login_url='/login/')
+#@csrf_exempt
+def recommendations(request):
+	"""
+		Recommend Java Wikibook content assignment 3
+	"""
+	try:
+		user = request.user.username
+		usr = SiteUser.objects.filter(username=user)[0]
+
+
+		return render_to_response('templates/recommendations.html', {}, context_instance=RequestContext(request))
+
+	except Exception as e:
+		print e
+		logger.debug(e)
+		logging.warning(e)

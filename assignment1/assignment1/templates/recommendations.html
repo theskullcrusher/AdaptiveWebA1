@@ -7,11 +7,12 @@
    <hr>
 -->
 {% if user.is_authenticated %}
+ <h2><a href="{% url 'profile' %}">Profile</a></h2>
  <h2><a href="{% url 'analytics' %}">Analytics</a></h2>
- <h2><a href="{% url 'recommendations' %}">Recommendations</a></h2>
 {% endif %}
-  <h2>Profile</h2>
+  <h2>Recommendations</h2>
   <hr>
+  <h4>Java Wikibook top content-based recommendations for input data</h4>
   <h4><b>Why do you decide to log user actions?</b></h4>
   <p><i>User actions give information about the behaviour of a user, his thinking, the prominent sections of a user interface and tons of other information that can be fed to intelligent systems that learn each user's special traits, likings, interests and help better serve the information that's available for the user, personalized to the specific user, dynamically, meaning that the user model keeps on evolving. Thus, logging user actions is an important input for an adaptive system with regards to implicit user information collection.</i></p>
   <hr>
