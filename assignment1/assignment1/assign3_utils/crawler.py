@@ -49,6 +49,7 @@ def crawler():
 					# print title
 					# print "#################################################No title available"
 				main_page['title'] = title
+				main_page['url'] = base_url + link
 				title = ""
 				content = ""
 				subdata = []
