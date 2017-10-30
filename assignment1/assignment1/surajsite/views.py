@@ -515,11 +515,13 @@ def recommendations(request):
 				input_.append(row[1]+row[2])
 
 		output = []
-		for each in input_:
+		for n, each in enumerate(input_):
 			val = utils.search_index(each)
 			val = [doc for doc in val['hits']['hits']]
 			if len(val)>10:
 				val = val[:10]
+
+			data["content"+str(n+1)]
 
 
 

@@ -52,19 +52,21 @@ def create_index():
 		failed_count1 = 0
 		#es.delete(index='wikibook', doc_type='book', id=1)
 		#results = []
-#		for n, each_doc in enumerate(docs):
-		try:
-#			val = each_doc['title'].strip().replace(' ', '').lower()
-#			val = re.sub('[^0-9a-zA-Z]+', '', val)
-			es.delete(index='wikibooks', doc_type='book', id=1)
-			res = es.index(index='wikibooks', doc_type='book', body=docs, op_type='create', id=1)
-			if not res['created']:
-				failed_count += 1
-#				continue
-		except Exception as e:
-			print e
-			failed_count1 += 1
-#			continue		
+		for n, each_doc in enumerate(docs):
+			try:
+				# val = each_doc['title'].strip().replace(' ', '').lower()
+				# val = re.sub('[^0-9a-zA-Z]+', '', val)
+				es.delete(index='wikibooks', doc_type='book', id=1)
+				exit()
+				es.delete(index='wikibooks', doc_type='book', id=n+1)
+				res = es.index(index='wikibooks', doc_type='book', body=docs, op_type='create', id=1)
+				if not res['created']:
+					failed_count += 1
+					continue
+			except Exception as e:
+				print e
+				failed_count1 += 1
+				continue		
 
 		#print('Created? ',res['created'])
 		print "Failed insertions:",failed_count, ' ', failed_count1
