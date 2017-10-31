@@ -526,8 +526,8 @@ def recommendations(request):
 			if len(val)>10:
 				val = val[:10]
 				scores = scores[:10]
-			for z, v in enumerate(val):
-				v['score'] = scores[z]
+			# for z, v in enumerate(val):
+			# 	v['score'] = scores[z]
 			data["content"+str(n+1)] = dict_to_string(val)
 
 		for n, x in enumerate(input_):
@@ -549,7 +549,7 @@ def dict_to_string(val):
 		string += '\n\n========================================Recommendation {}==================================================='.format(n+1)
 		string += '\nUrl:'+each['url']
 		string += '\nTitle:'+each['title']
-		string += '\nScore:'+str(each['score'])
+		# string += '\nScore:'+str(each['score'])
 		string += '\nContent:'+each['content']
 
 	string = re.sub(r'\n+', '\n', string).strip()
