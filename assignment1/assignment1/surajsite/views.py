@@ -515,7 +515,7 @@ def recommendations(request):
 			for n, row in enumerate(fi):
 				if n == 0:
 					continue
-				input_.append(row[1]+row[2])
+				input_.append(row[1]+'\n'+row[2])
 
 		output = []
 		for n, each in enumerate(input_):
@@ -524,6 +524,9 @@ def recommendations(request):
 			if len(val)>10:
 				val = val[:10]
 			data["content"+str(n+1)] = dict_to_string(val)
+
+		for n, x in enumerate(input_):
+			data['title'+str(n+1)] = x[:200]+'.....'
 
 		return render_to_response('templates/recommendations.html', data, context_instance=RequestContext(request))
 
