@@ -16,6 +16,9 @@ from django.contrib.auth.models import User
 import json, re
 from elasticsearch import Elasticsearch
 import pprint
+import os
+cur_dir = os.getcwd()
+cur_dir += '/assignment1/assign3_utils/'
 
 def utils():
 	pass
@@ -42,7 +45,7 @@ def search_index(search):
 
 def create_index():
 	"""Used to create index, etc"""
-	with open('data.json','r') as f:
+	with open(os.path.join(cur_dir,'data.json'),'r') as f:
 		es = Elasticsearch()
 		docs = json.load(f)
 		# docs = {}
