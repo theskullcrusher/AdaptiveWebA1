@@ -531,7 +531,7 @@ def recommendations(request):
 			data["content"+str(n+1)] = dict_to_string(val)
 
 		for n, x in enumerate(input_):
-			data['title'+str(n+1)] = str(n+1) + ') ' + x[:200]+'.....'
+			data['title'+str(n+1)] = 'Post ' + str(n+1) + '---->\n' + x[:200]+'.....'
 
 		return render_to_response('templates/recommendations.html', data, context_instance=RequestContext(request))
 
@@ -546,7 +546,7 @@ def dict_to_string(val):
 	"""Convert list of dicts into a string"""
 	string = ""
 	for n, each in enumerate(val):
-		string += '\n\n========================================Recommendation {}==================================================='.format(n+1)
+		string += '\n\n========================================Recommended Item {}==================================================='.format(n+1)
 		string += '\nUrl:'+each['url']
 		string += '\nTitle:'+each['title']
 		string += '\nScore:'+str(each['score'])
