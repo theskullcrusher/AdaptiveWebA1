@@ -26,6 +26,7 @@ import os
 cur_dir = os.getcwd()
 cur_dir += '/assignment1/assign3_utils/'
 
+
 class LogTable(tables.Table):
 	class Meta:
 		model = UserLogs
@@ -526,7 +527,7 @@ def recommendations(request):
 			data["content"+str(n+1)] = dict_to_string(val)
 
 		for n, x in enumerate(input_):
-			data['title'+str(n+1)] = x[:200]+'.....'
+			data['title'+str(n+1)] = str(n+1) + ') ' + x[:200]+'.....'
 
 		return render_to_response('templates/recommendations.html', data, context_instance=RequestContext(request))
 
@@ -539,9 +540,14 @@ def recommendations(request):
 def dict_to_string(val):
 	"""Convert list of dicts into a string"""
 	string = ""
-	for each in val:
-		string += '\n\nUrl:'+each['url']
+	for n, each in enumerate(val):
+		string += '\n\n========================================Recommendation {}==================================================='.format(n+1)
+		string += '\nUrl:'+each['url']
 		string += '\nTitle:'+each['title']
 		string += '\nContent:'+each['content']
+
+	string = re.sub(r'\n+', '\n', word).strip()
 	return string
+
+
 		
