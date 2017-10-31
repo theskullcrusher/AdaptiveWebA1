@@ -25,7 +25,7 @@ def utils():
 
 def search_index(search):
 	"""Search an index"""
-        with open('data.json','r') as f:
+        with open(os.path.join(cur_dir,'data.json'),'r') as f:
                 es = Elasticsearch()
                 docs = json.load(f)
 #		body = {"query": {"match": {"wikibooks.content":search}}, 
