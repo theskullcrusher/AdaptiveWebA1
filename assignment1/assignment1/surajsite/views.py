@@ -22,6 +22,10 @@ import re
 import random
 from django.contrib.auth.models import User
 import csv
+import os
+cur_dir = os.getcwd()
+cur_dir = cur_dir.rsplit('/',1)[0]
+cur_dir += '/assign3_utils/'
 
 class LogTable(tables.Table):
 	class Meta:
@@ -507,7 +511,7 @@ def recommendations(request):
 			data["content"+str(i)] = ""
 
 		input_ = []
-		with open('../assign3_utils/data_aw17f.csv','r') as f:
+		with open(os.path.join(cur_dir,'data_aw17f.csv'),'r') as f:
 			fi = csv.reader(f)
 			for n, row in enumerate(fi):
 				if n == 0:
@@ -520,7 +524,6 @@ def recommendations(request):
 			val = [doc['_source'] for doc in val['hits']['hits']]
 			if len(val)>10:
 				val = val[:10]
-
 			data["content"+str(n+1)] = dict_to_string(val)
 
 		return render_to_response('templates/recommendations.html', data, context_instance=RequestContext(request))
