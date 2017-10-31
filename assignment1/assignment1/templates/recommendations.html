@@ -14,10 +14,17 @@
 <script type="text/javascript">
 function toggle(id) {
   var e = document.getElementById(id);
-  if(e.style.display == 'block')
-    e.style.display = 'none';
-  else
-    e.style.display = 'block';
+    if(e.style.display == 'block')
+      e.style.display = 'none';
+    else
+      e.style.display = 'block'; 
+  var ids = ["content1","content2","content3","content4","content5","content6","content7","content8","content9","content10"];
+  var index = ids.indexOf(id);
+  ids.splice(index, 1);
+  for (i = 0; i < ids.length; i++) { 
+    var f = document.getElementById(ids[i]);
+    f.style.display = 'none';
+  }
 }
 </script>
 <style type="text/css">
@@ -27,9 +34,7 @@ a {
      border:none; 
      padding:0!important;
      font: inherit;
-     /*border is optional*/
-     border-bottom:1px solid #444; 
-     cursor: pointer; }
+      }
 .main {
   display: none;
 }
