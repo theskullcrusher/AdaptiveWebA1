@@ -546,7 +546,7 @@ def dict_to_string(val):
 		string += '\nTitle:'+each['title']
 		string += '\nContent:'+each['content']
 
-	string = re.sub(r'\n+', '\n', word).strip()
+	string = re.sub(r'\n+', '\n', string).strip()
 	return string
 
 
