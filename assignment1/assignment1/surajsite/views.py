@@ -537,6 +537,7 @@ def recommendations(request):
 
 	except Exception as e:
 		print e
+		traceback.print_exc()
 		logger.debug(e)
 		logging.warning(e)
 
