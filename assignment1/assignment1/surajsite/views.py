@@ -517,13 +517,11 @@ def recommendations(request):
 		output = []
 		for n, each in enumerate(input_):
 			val = utils.search_index(each)
-			val = [doc for doc in val['hits']['hits']]
+			val = [doc['_source'] for doc in val['hits']['hits']]
 			if len(val)>10:
 				val = val[:10]
 
-			data["content"+str(n+1)]
-
-
+			data["content"+str(n+1)] = dict_to_string(val)
 
 		return render_to_response('templates/recommendations.html', data, context_instance=RequestContext(request))
 
@@ -531,3 +529,14 @@ def recommendations(request):
 		print e
 		logger.debug(e)
 		logging.warning(e)
+
+
+def dict_to_string(val):
+	"""Convert list of dicts into a string"""
+	string = ""
+	for each in val:
+		string += '\n\nUrl:'+each['url']
+		string += '\nTitle:'+each['title']
+		string += '\nContent:'+each['content']
+	return string
+		
