@@ -24,8 +24,7 @@ from django.contrib.auth.models import User
 import csv
 import os
 cur_dir = os.getcwd()
-cur_dir = cur_dir.rsplit('/',1)[0]
-cur_dir += '/assign3_utils/'
+cur_dir += '/assignment1/assign3_utils/'
 
 class LogTable(tables.Table):
 	class Meta:
