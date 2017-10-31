@@ -45,3 +45,21 @@
    Login using assignment 1 credentials
    Go to the 'Analytics' page link
    Use all 3 tabs and scroll to read analysis,comments and interact with graphs
+
+
+
+5. Instructions for testing my Assignment 3:
+   To setup - follow Assignment 1 instuction steps 0 to 2.
+   Please visit http://ec2-54-215-192-184.us-west-1.compute.amazonaws.com
+   Login using assignment 1 credentials
+   Go to the 'Recommendations' page link. All indexed pages with their recommended top 10 items are displayed on this page. 
+   I have clipped the questions after 200 characters on purpose for a better viewing experience.
+   I have also added a javascript function to toggle visibility of each of the 10 posts so that atmost one section is active at a time. Click on any Post to view it's recommendations (stemming). 
+   At the bottom of the page, I've explained content indexing and originality.
+   Find all implementation related to Assigment3 in the project sourcecode under folders: AdaptiveWebA1/assignment1/assignment1/assign3_utils/, and in surajsite/views.py and templates/recommendations.html. 
+   Installation of ElasticSearch is done separately and has not been attached as a part of the sourcecode. 
+   assign3_utils/crawler.py has sourcecode to crawl the desired webpages, fragment it and store it as data.json, 
+   assign3_utils/utils.py has sourcecode to connect to elasticsearch using python Elasticsearch library and create_index and search over that index.
+   surajsite/views.py has a function recommendations which populates the html template using Jinja2 templating engine and serves the data over the web.
+   Content Indexing is done with title, url, content and a flag parameter for each section in each page which is considered as an atomic unit to be served back, not the entire page. 92 pages have more than 500 subsections which may include code fragments too. The input for the search query is the entire question+codefragment given in the input posts csv file.
+   

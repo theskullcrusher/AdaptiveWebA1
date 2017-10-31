@@ -63,7 +63,7 @@ def create_index():
 				# val = re.sub('[^0-9a-zA-Z]+', '', val)
 				# es.delete(index='wikibooks', doc_type='book', id=1)
 				# exit()
-				es.delete(index='wikibooks', doc_type='book', id=id_count)
+				#es.delete(index='wikibooks', doc_type='book', id=id_count)
 				each_doc['flag'] = True
 				url = each_doc['url']
 				subdata = each_doc['subdata']
@@ -74,7 +74,7 @@ def create_index():
 					failed_count += 1
 
 				for d in subdata:
-					es.delete(index='wikibooks', doc_type='book', id=id_count)
+					#es.delete(index='wikibooks', doc_type='book', id=id_count)
 					d['url'] = url
 					d['flag'] = False
 					res = es.index(index='wikibooks', doc_type='book', body=d, op_type='create', id=id_count)
